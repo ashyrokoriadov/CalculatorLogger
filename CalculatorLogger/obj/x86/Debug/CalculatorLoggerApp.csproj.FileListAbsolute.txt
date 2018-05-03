@@ -7,3 +7,7 @@ C:\Users\Andriy Shyrokoryadov\Source\Workspaces\CalculatorLogger\version-2.0.0.0
 C:\Users\Andriy Shyrokoryadov\Source\Workspaces\CalculatorLogger\version-2.0.0.0\CalculatorLogger\obj\x86\Debug\CalculatorLoggerApp.csprojResolveAssemblyReference.cache
 C:\Users\Andriy Shyrokoryadov\Source\Workspaces\CalculatorLogger\version-2.0.0.0\CalculatorLogger\obj\x86\Debug\CalculatorLogger.exe
 C:\Users\Andriy Shyrokoryadov\Source\Workspaces\CalculatorLogger\version-2.0.0.0\CalculatorLogger\obj\x86\Debug\CalculatorLogger.pdb
+E:\Workspace\GIT\CalculatorLogger - ver.2.0.0.0\CalculatorLogger\bin\Debug\CalculatorLogger.exe.config
+E:\Workspace\GIT\CalculatorLogger - ver.2.0.0.0\CalculatorLogger\bin\Debug\CalculatorLogger.XML
+E:\Workspace\GIT\CalculatorLogger - ver.2.0.0.0\CalculatorLogger\obj\x86\Debug\CalculatorLogger.exe
+E:\Workspace\GIT\CalculatorLogger - ver.2.0.0.0\CalculatorLogger\obj\x86\Debug\CalculatorLogger.pdb
