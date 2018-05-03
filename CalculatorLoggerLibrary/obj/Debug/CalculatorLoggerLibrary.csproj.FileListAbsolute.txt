@@ -1,0 +1,4 @@
+C:\Users\Andriy Shyrokoryadov\Source\Workspaces\CalculatorLogger\version-2.0.0.0\CalculatorLoggerLibrary\bin\Debug\CalculatorLoggerLibrary.dll
+C:\Users\Andriy Shyrokoryadov\Source\Workspaces\CalculatorLogger\version-2.0.0.0\CalculatorLoggerLibrary\bin\Debug\CalculatorLoggerLibrary.pdb
+C:\Users\Andriy Shyrokoryadov\Source\Workspaces\CalculatorLogger\version-2.0.0.0\CalculatorLoggerLibrary\obj\Debug\CalculatorLoggerLibrary.dll
+C:\Users\Andriy Shyrokoryadov\Source\Workspaces\CalculatorLogger\version-2.0.0.0\CalculatorLoggerLibrary\obj\Debug\CalculatorLoggerLibrary.pdb

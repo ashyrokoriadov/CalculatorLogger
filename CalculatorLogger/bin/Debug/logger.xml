@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<XmlLogger>
+  <Formula>
+    <FormulaText position="0" time="2018-05-03 17:05:29.742">TestValue1 + TestValue2</FormulaText>
+    <FormulaResolution position="1" time="2018-05-03 17:05:29.742">(-10,4) + 12,8</FormulaResolution>
+    <FormulaResultName position="2" time="2018-05-03 17:05:29.742">AddValueResult</FormulaResultName>
+    <FormulaResultValue position="3" time="2018-05-03 17:05:29.742">2,4</FormulaResultValue>
+  </Formula>
+  <Formula>
+    <Elements position="4" time="2018-05-03 17:05:29.743">TestValue1 = -10,4, TestValue2 = 12,8, TestValue3 = 13,7, TestValue5 = 2,34</Elements>
+    <Condition position="5" time="2018-05-03 17:05:29.743">SELECT MAX</Condition>
+    <FormulaResultName position="6" time="2018-05-03 17:05:29.743">Max value of 4 items</FormulaResultName>
+    <FormulaResultValue position="7" time="2018-05-03 17:05:29.743">13,7</FormulaResultValue>
+  </Formula>
+  <Condition>
+    <Formula position="8" time="2018-05-03 17:05:29.744">TestValue1 &gt; TestValue7 ? 1 : 2</Formula>
+    <Resolution position="9" time="2018-05-03 17:05:29.744">-10,4 &gt; -10 = False</Resolution>
+    <ResultName position="10" time="2018-05-03 17:05:29.744">XML log value name</ResultName>
+    <ResultValue position="11" time="2018-05-03 17:05:29.744">2</ResultValue>
+  </Condition>
+  <MultiCondition>
+    <ValueIfTrue position="12" time="2018-05-03 17:05:29.744">111</ValueIfTrue>
+    <ValueIfFalse position="13" time="2018-05-03 17:05:29.744">222</ValueIfFalse>
+    <LogicalOperator position="14" time="2018-05-03 17:05:29.745">AND</LogicalOperator>
+    <Conditions>
+      <Condition>
+        <Formula position="15" time="2018-05-03 17:05:29.745">TestValue1 &gt; TestValue7 ? 1 : 2</Formula>
+        <Resolution position="16" time="2018-05-03 17:05:29.745">-10,4 &gt; -10 = False</Resolution>
+        <ResultName position="17" time="2018-05-03 17:05:29.745">TemporaryValue1</ResultName>
+        <ResultValue position="18" time="2018-05-03 17:05:29.745">2</ResultValue>
+      </Condition>
+      <Condition>
+        <Formula position="19" time="2018-05-03 17:05:29.745">TestValue1 &gt; TestValue8 ? 3 : 4</Formula>
+        <Resolution position="20" time="2018-05-03 17:05:29.745">-10,4 &gt; 16 = False</Resolution>
+        <ResultName position="21" time="2018-05-03 17:05:29.745">TemporaryValue2</ResultName>
+        <ResultValue position="22" time="2018-05-03 17:05:29.745">4</ResultValue>
+      </Condition>
+    </Conditions>
+    <ResultName position="23" time="2018-05-03 17:05:29.745">False</ResultName>
+    <ResultValue position="24" time="2018-05-03 17:05:29.745">222</ResultValue>
+  </MultiCondition>
+  <Switch>
+    <MultiConditions>
+      <MultiCondition>
+        <ValueIfTrue position="25" time="2018-05-03 17:05:29.747">111</ValueIfTrue>
+        <ValueIfFalse position="26" time="2018-05-03 17:05:29.747">222</ValueIfFalse>
+        <LogicalOperator position="27" time="2018-05-03 17:05:29.747">AND</LogicalOperator>
+        <Conditions>
+          <Condition>
+            <Formula position="28" time="2018-05-03 17:05:29.747">SwitchTest &gt; TestValue7 ? 1 : 2</Formula>
+            <Resolution position="29" time="2018-05-03 17:05:29.747">15 &gt; -10 = True</Resolution>
+            <ResultName position="30" time="2018-05-03 17:05:29.747">TemporaryValue1</ResultName>
+            <ResultValue position="31" time="2018-05-03 17:05:29.747">1</ResultValue>
+          </Condition>
+          <Condition>
+            <Formula position="32" time="2018-05-03 17:05:29.747">SwitchTest &gt; TestValue8 ? 3 : 4</Formula>
+            <Resolution position="33" time="2018-05-03 17:05:29.747">15 &gt; 16 = False</Resolution>
+            <ResultName position="34" time="2018-05-03 17:05:29.747">TemporaryValue2</ResultName>
+            <ResultValue position="35" time="2018-05-03 17:05:29.747">4</ResultValue>
+          </Condition>
+        </Conditions>
+        <ResultName position="36" time="2018-05-03 17:05:29.747">False</ResultName>
+        <ResultValue position="37" time="2018-05-03 17:05:29.747">222</ResultValue>
+      </MultiCondition>
+      <MultiCondition>
+        <ValueIfTrue position="38" time="2018-05-03 17:05:29.747">333</ValueIfTrue>
+        <ValueIfFalse position="39" time="2018-05-03 17:05:29.747">444</ValueIfFalse>
+        <LogicalOperator position="40" time="2018-05-03 17:05:29.747">AND</LogicalOperator>
+        <Conditions>
+          <Condition>
+            <Formula position="41" time="2018-05-03 17:05:29.747">SwitchTest &gt; TestValue9 ? 5 : 6</Formula>
+            <Resolution position="42" time="2018-05-03 17:05:29.747">15 &gt; -8 = True</Resolution>
+            <ResultName position="43" time="2018-05-03 17:05:29.747">TemporaryValue1</ResultName>
+            <ResultValue position="44" time="2018-05-03 17:05:29.747">5</ResultValue>
+          </Condition>
+          <Condition>
+            <Formula position="45" time="2018-05-03 17:05:29.747">SwitchTest &gt; TestValue10 ? 7 : 8</Formula>
+            <Resolution position="46" time="2018-05-03 17:05:29.747">15 &gt; 14 = True</Resolution>
+            <ResultName position="47" time="2018-05-03 17:05:29.747">TemporaryValue2</ResultName>
+            <ResultValue position="48" time="2018-05-03 17:05:29.747">7</ResultValue>
+          </Condition>
+        </Conditions>
+        <ResultName position="49" time="2018-05-03 17:05:29.747">True</ResultName>
+        <ResultValue position="50" time="2018-05-03 17:05:29.747">333</ResultValue>
+      </MultiCondition>
+    </MultiConditions>
+    <ResultName position="51" time="2018-05-03 17:05:29.747">SwitchOutputValue</ResultName>
+    <ResultValue position="52" time="2018-05-03 17:05:29.747">333</ResultValue>
+  </Switch>
+  <Band>
+    <Name position="53" time="2018-05-03 17:05:29.748">TaxBand</Name>
+    <EvaluatedValueName position="54" time="2018-05-03 17:05:29.748">ExpectedResult</EvaluatedValueName>
+    <EvaluatedValue position="55" time="2018-05-03 17:05:29.748">18,18</EvaluatedValue>
+    <MaxValue position="56" time="2018-05-03 17:05:29.748">20</MaxValue>
+    <ResultValue position="57" time="2018-05-03 17:05:29.748">1,29</ResultValue>
+  </Band>
+</XmlLogger>
