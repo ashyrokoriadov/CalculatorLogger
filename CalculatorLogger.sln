@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorLoggerApp", "CalculatorLogger\CalculatorLoggerApp.csproj", "{1C8C4953-F27D-4ED8-9062-75B17EA81AD0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorLoggerApp", "CalculatorLoggerApp\CalculatorLoggerApp.csproj", "{1C8C4953-F27D-4ED8-9062-75B17EA81AD0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorLoggerLibrary", "CalculatorLoggerLibrary\CalculatorLoggerLibrary.csproj", "{3B86F3B5-614E-4445-A31A-6AFB162FEB38}"
 EndProject
@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "..\Calculator\Calculator\Calculator.csproj", "{7B9B9D91-78B9-4E39-AEDC-93E26F83B940}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{7B9B9D91-78B9-4E39-AEDC-93E26F83B940}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorTests", "..\CalculatorTests\CalculatorTests\CalculatorTests.csproj", "{B91EA6C1-FD6A-40D6-BBDA-8BAB4CF03AE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorTests", "CalculatorTests\CalculatorTests.csproj", "{B91EA6C1-FD6A-40D6-BBDA-8BAB4CF03AE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

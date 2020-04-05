@@ -40,9 +40,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CalculatorLoggerLibrary">
-      <HintPath>..\CalculatorLoggerLibrary\bin\Debug\CalculatorLoggerLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -70,6 +67,12 @@
     <Compile Include="ModelsTests\MultiConditionTest.cs" />
     <Compile Include="ModelsTests\SwitchTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CalculatorLoggerLibrary\CalculatorLoggerLibrary.csproj">
+      <Project>{3b86f3b5-614e-4445-a31a-6afb162feb38}</Project>
+      <Name>CalculatorLoggerLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
