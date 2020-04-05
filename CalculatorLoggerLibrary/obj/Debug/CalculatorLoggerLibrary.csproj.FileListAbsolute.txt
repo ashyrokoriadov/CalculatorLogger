@@ -2,3 +2,9 @@ C:\Users\Andriy Shyrokoryadov\Source\Workspaces\CalculatorLogger\version-2.0.0.0
 C:\Users\Andriy Shyrokoryadov\Source\Workspaces\CalculatorLogger\version-2.0.0.0\CalculatorLoggerLibrary\bin\Debug\CalculatorLoggerLibrary.pdb
 C:\Users\Andriy Shyrokoryadov\Source\Workspaces\CalculatorLogger\version-2.0.0.0\CalculatorLoggerLibrary\obj\Debug\CalculatorLoggerLibrary.dll
 C:\Users\Andriy Shyrokoryadov\Source\Workspaces\CalculatorLogger\version-2.0.0.0\CalculatorLoggerLibrary\obj\Debug\CalculatorLoggerLibrary.pdb
+D:\GIT\CalculatorLogger\CalculatorLoggerLibrary\bin\Debug\CalculatorLoggerLibrary.dll
+D:\GIT\CalculatorLogger\CalculatorLoggerLibrary\bin\Debug\CalculatorLoggerLibrary.pdb
+D:\GIT\CalculatorLogger\CalculatorLoggerLibrary\obj\Debug\CalculatorLoggerLibrary.csprojAssemblyReference.cache
+D:\GIT\CalculatorLogger\CalculatorLoggerLibrary\obj\Debug\CalculatorLoggerLibrary.csproj.CoreCompileInputs.cache
+D:\GIT\CalculatorLogger\CalculatorLoggerLibrary\obj\Debug\CalculatorLoggerLibrary.dll
+D:\GIT\CalculatorLogger\CalculatorLoggerLibrary\obj\Debug\CalculatorLoggerLibrary.pdb

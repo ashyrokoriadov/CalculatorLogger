@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorLoggerApp", "CalculatorLogger\CalculatorLoggerApp.csproj", "{1C8C4953-F27D-4ED8-9062-75B17EA81AD0}"
 EndProject
@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "..\Calculator\Calculator\Calculator.csproj", "{7B9B9D91-78B9-4E39-AEDC-93E26F83B940}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorTests", "..\CalculatorTests\CalculatorTests\CalculatorTests.csproj", "{B91EA6C1-FD6A-40D6-BBDA-8BAB4CF03AE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,23 +49,27 @@ Global
 		{CF38BD3B-3942-4091-84A8-B148567A74AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CF38BD3B-3942-4091-84A8-B148567A74AE}.Release|x86.ActiveCfg = Release|Any CPU
 		{CF38BD3B-3942-4091-84A8-B148567A74AE}.Release|x86.Build.0 = Release|Any CPU
+		{7B9B9D91-78B9-4E39-AEDC-93E26F83B940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B9B9D91-78B9-4E39-AEDC-93E26F83B940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B9B9D91-78B9-4E39-AEDC-93E26F83B940}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7B9B9D91-78B9-4E39-AEDC-93E26F83B940}.Debug|x86.Build.0 = Debug|Any CPU
+		{7B9B9D91-78B9-4E39-AEDC-93E26F83B940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B9B9D91-78B9-4E39-AEDC-93E26F83B940}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B9B9D91-78B9-4E39-AEDC-93E26F83B940}.Release|x86.ActiveCfg = Release|Any CPU
+		{7B9B9D91-78B9-4E39-AEDC-93E26F83B940}.Release|x86.Build.0 = Release|Any CPU
+		{B91EA6C1-FD6A-40D6-BBDA-8BAB4CF03AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B91EA6C1-FD6A-40D6-BBDA-8BAB4CF03AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B91EA6C1-FD6A-40D6-BBDA-8BAB4CF03AE6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B91EA6C1-FD6A-40D6-BBDA-8BAB4CF03AE6}.Debug|x86.Build.0 = Debug|Any CPU
+		{B91EA6C1-FD6A-40D6-BBDA-8BAB4CF03AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B91EA6C1-FD6A-40D6-BBDA-8BAB4CF03AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B91EA6C1-FD6A-40D6-BBDA-8BAB4CF03AE6}.Release|x86.ActiveCfg = Release|Any CPU
+		{B91EA6C1-FD6A-40D6-BBDA-8BAB4CF03AE6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://andriyshyrokoryadov.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = CalculatorLogger\\CalculatorLoggerApp.csproj
-		SccProjectName1 = CalculatorLogger
-		SccLocalPath1 = CalculatorLogger
-		SccProjectUniqueName2 = CalculatorLoggerLibrary\\CalculatorLoggerLibrary.csproj
-		SccProjectName2 = CalculatorLoggerLibrary
-		SccLocalPath2 = CalculatorLoggerLibrary
-		SccProjectUniqueName3 = CalculatorLoggerTests\\CalculatorLoggerTests.csproj
-		SccProjectName3 = CalculatorLoggerTests
-		SccLocalPath3 = CalculatorLoggerTests
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2AA2D33B-40BD-4D67-A49A-5D149272355D}
 	EndGlobalSection
 EndGlobal
