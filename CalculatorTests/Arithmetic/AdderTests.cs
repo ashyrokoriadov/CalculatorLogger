@@ -1,26 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Calculator.Abstractions.Arithmetic;
-using Calculator.Abstractions.Validators;
 using Calculator.Arithmetic;
 using Calculator.Models;
-using CalculatorTests.Mocks;
 using NUnit.Framework;
 
 namespace CalculatorTests.Arithmetic
 {
-    public class AdderTests
+    public class AdderTests : ArithmeticTestsBase<IAdder<CalculatorValue>>
     {
-        private IAdder<CalculatorValue> _adderUnderTests;
-        private IArithmeticValidator<CalculatorValue> _arithmeticValidatorMock;
-
-        [SetUp]
-        public void Setup()
+        protected override void InitializeSystemUnderTests()
         {
-            if(_arithmeticValidatorMock == null)
-                _arithmeticValidatorMock = ArithmeticValidatorMock.GetMock();
-            _adderUnderTests = new Adder(_arithmeticValidatorMock);
+            SystemUnderTests = new Adder(ArithmeticValidatorMock);
         }
 
         [TestCaseSource(nameof(SumTwoValuesCaseSource))]
@@ -30,7 +21,7 @@ namespace CalculatorTests.Arithmetic
             var calculatorValueY = new CalculatorValue(valueY, nameof(valueY));
             var expectedResult = new CalculatorValue(expected, $"{nameof(valueX)} + {nameof(valueY)}");
 
-            var actualResult = _adderUnderTests.Add(calculatorValueX, calculatorValueY);
+            var actualResult = SystemUnderTests.Add(calculatorValueX, calculatorValueY);
             Assert.AreEqual(expectedResult.Value, actualResult.Value);
             Assert.AreEqual(expectedResult.Name, actualResult.Name);
         }
@@ -42,7 +33,7 @@ namespace CalculatorTests.Arithmetic
             , string expectedName)
         {
             var calculatorValues = values.Select(v => new CalculatorValue(v, name));
-            var actualResult = _adderUnderTests.Add(calculatorValues);
+            var actualResult = SystemUnderTests.Add(calculatorValues);
             var expectedResult = new CalculatorValue(expected, expectedName);
             Assert.AreEqual(expectedResult.Value, actualResult.Value);
             Assert.AreEqual(expectedResult.Name, actualResult.Name);
@@ -51,7 +42,7 @@ namespace CalculatorTests.Arithmetic
         [TestCaseSource(nameof(SumTwoValuesNullCaseSource))]
         public void Has_to_return_empty_object_if_empty_array_is_passed(CalculatorValue valueX, CalculatorValue valueY)
         {
-            var actualResult = _adderUnderTests.Add(valueX, valueY);
+            var actualResult = SystemUnderTests.Add(valueX, valueY);
             var expectedResult = CalculatorValue.Empty();
             Assert.AreEqual(expectedResult.Value, actualResult.Value);
             Assert.AreEqual(expectedResult.Name, actualResult.Name);
@@ -61,7 +52,7 @@ namespace CalculatorTests.Arithmetic
         public void Has_to_return_empty_object_if_empty_values_are_passed(IEnumerable<CalculatorValue> emptyOrNullEnumerable)
         {
             var expectedResult = CalculatorValue.Empty();
-            var actualResult = _adderUnderTests.Add(emptyOrNullEnumerable);
+            var actualResult = SystemUnderTests.Add(emptyOrNullEnumerable);
             Assert.AreEqual(expectedResult.Value, actualResult.Value);
             Assert.AreEqual(expectedResult.Name, actualResult.Name);
         }

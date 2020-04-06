@@ -7,14 +7,11 @@ using Calculator.Models;
 
 namespace Calculator.Arithmetic
 {
-    public class Adder : IAdder<CalculatorValue>
+    public class Adder : ArithmeticBase, IAdder<CalculatorValue>
     {
-        private readonly IArithmeticValidator<CalculatorValue> _validator;
-
         public Adder(IArithmeticValidator<CalculatorValue> validator)
-        {
-            _validator = validator;
-        }
+            : base(validator)
+        { }
 
         public CalculatorValue Add(CalculatorValue valueX, CalculatorValue valueY)
         {
@@ -33,12 +30,6 @@ namespace Calculator.Arithmetic
 
             return Calculate(valuesAsArray);
         }
-
-        private bool ValidateInput(CalculatorValue valueX, CalculatorValue valueY)
-            => _validator.ValidateIsNull(valueX) || _validator.ValidateIsNull(valueY);
-
-        private bool ValidateInput(IEnumerable<CalculatorValue> values)
-            => _validator.ValidateIsEnumerableEmpty(values);
 
         private CalculatorValue Calculate(CalculatorValue[] values)
         {
