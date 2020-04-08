@@ -5,6 +5,6 @@ namespace Calculator.Abstractions.Arithmetic
     public interface IDivider<T>
     {
         T Divide(T valueX, T valueY);
-        T Divider(IEnumerable<T> values, T dividend);
+        T Divide(IEnumerable<T> values, T dividend);
     }
 }
