@@ -62,7 +62,6 @@
     <Compile Include="ImplementationsTests\ConsoleFormulaLoggerTest.cs" />
     <Compile Include="ImplementationsTests\XMLFormulaLoggerTest.cs" />
     <Compile Include="ModelsTests\CalculationUnitTest.cs" />
-    <Compile Include="ModelsTests\BandTest.cs" />
     <Compile Include="ModelsTests\SingleConditionTest.cs" />
     <Compile Include="ModelsTests\MultiConditionTest.cs" />
     <Compile Include="ModelsTests\SwitchTest.cs" />

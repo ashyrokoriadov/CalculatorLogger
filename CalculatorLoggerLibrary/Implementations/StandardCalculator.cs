@@ -12,7 +12,7 @@ namespace CalculatorLoggerLibrary.Implementations
     /// <summary>
     /// A class used to perform calculations with logging functionality.
     /// </summary>
-    public sealed class StandardCalculator : IEnumerable, ICalculator, IDataManager
+    public sealed class StandardCalculator : IEnumerable, ICalculator
     {
         private Dictionary<string, decimal> _dictionary = new Dictionary<string, decimal>();
         private IFormulaLogger _formulaLogger;
@@ -409,51 +409,6 @@ namespace CalculatorLoggerLibrary.Implementations
             }
 
             throw new Exception(string.Format("The value corresponding \"{0}\" key was not found", valueToCompare));         
-        }
-
-        /// <summary>
-        /// Resolves a band.
-        /// </summary>
-        /// <param name="resultValueName">A name of result to be used in further calculations</param>
-        /// <param name="valueToCompare">A string indetifier in an internal collection</param>
-        /// <param name="band">A band to be resolved</param>
-        /// <returns>A result of band resolving</returns>
-        public CalculationUnit ResolveBand(string resultValueName, string valueToCompare, Band band)
-        {
-            decimal value = 0M;
-            bool Exists = false;
-            if (!string.IsNullOrEmpty(valueToCompare))
-            {
-                Exists = _dictionary.TryGetValue(valueToCompare, out value);
-            }
-
-            if (Exists)
-            {
-                CalculationUnit valueToCompareCU = new CalculationUnit(value, valueToCompare);
-                if (band != null)
-                {
-                    band.ValueToCompare = valueToCompareCU;
-                    band.SetResult();
-                    _formulaLogger.LogBand(band);
-                    return new CalculationUnit(band.ResultValue, resultValueName != null ? resultValueName : "BandResult");
-                }
-                return new CalculationUnit(0M, "BandIsNull");
-            }
-
-            throw new Exception(string.Format("The value corresponding \"{0}\" key was not found", valueToCompare));
-        }
-
-        /// <summary>
-        /// A method gets data from a logger.
-        /// </summary>
-        /// <returns>An object representing logged data.</returns>
-        public object GetLogData()
-        {
-            if (FormulaLogger is IDataManager)
-            {
-                return ((IDataManager)FormulaLogger).GetLogData();
-            }
-            return null;
         }
 
         #region Private Methods

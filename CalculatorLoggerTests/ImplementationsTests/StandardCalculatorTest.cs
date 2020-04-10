@@ -29,7 +29,6 @@ namespace CalculatorLoggerTests.ImplementationsTests
         MultiCondition mc1;
         MultiCondition mc2;
 
-        Band b1;
         Dictionary<decimal, decimal> bands;
 
         [TestInitialize]
@@ -64,145 +63,8 @@ namespace CalculatorLoggerTests.ImplementationsTests
             bands.Add(5M, 3.84M);
             bands.Add(10M, 4.14M);
             bands.Add(20M, 4.44M);
-
-            b1 = new Band("Band1", bands);
         }
 
-        [TestMethod]
-        public void ShouldCorrectlyAddElements()
-        {
-            CalculationUnit cu = calculator.Add("Sum", new string[] { "item1", "item2", "item3", "item4" });
-            Assert.AreEqual("Sum", cu.ItemDescription);
-            Assert.AreEqual(28M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyAddElementsIfArrayContainsNullElements()
-        {
-            CalculationUnit cu = calculator.Add("Sum", new string[] { null, null, "item3", "item4" });
-            Assert.AreEqual("Sum", cu.ItemDescription);
-            Assert.AreEqual(15M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyAddElementsAndNotThrowAnExceptionWhenIdentifierIsNull()
-        {
-            CalculationUnit cu = calculator.Add(null, new string[] { "item1", "item2", "item3", "item4" });
-            Assert.AreEqual("SumResult", cu.ItemDescription);
-            Assert.AreEqual(28M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyAddElementsAndNotThrowAnExceptionWhenDataIsNull()
-        {
-            CalculationUnit cu = calculator.Add("Sum", null);
-            Assert.AreEqual("Sum", cu.ItemDescription);
-            Assert.AreEqual(0M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlySubtractElements()
-        {
-            CalculationUnit cu = calculator.Subtract("Difference", new string[] { "item1", "item2" });
-            Assert.AreEqual("Difference", cu.ItemDescription);
-            Assert.AreEqual(-2.6M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlySubtractElementsIfArrayContainsNullElements()
-        {
-            CalculationUnit cu = calculator.Subtract("Difference", new string[] { "item1", "item2", null});
-            Assert.AreEqual("Difference", cu.ItemDescription);
-            Assert.AreEqual(-2.6M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlySubtractElementsAndNotThrowAnExceptionWhenIdentifierIsNull()
-        {
-            CalculationUnit cu = calculator.Subtract(null, new string[] { "item1", "item2" });
-            Assert.AreEqual("SubtractResult", cu.ItemDescription);
-            Assert.AreEqual(-2.6M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlySubtractElementsAndNotThrowAnExceptionWhenDataIsNull()
-        {
-            CalculationUnit cu = calculator.Subtract("Difference", null);
-            Assert.AreEqual("Difference", cu.ItemDescription);
-            Assert.AreEqual(0M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyMultipleElements()
-        {
-            CalculationUnit cu = calculator.Multiple("Product", new string[] { "item3", "item2" });
-            Assert.AreEqual("Product", cu.ItemDescription);
-            Assert.AreEqual(49.92M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyMultipleElementsIfArrayContainsNullElements()
-        {
-            CalculationUnit cu = calculator.Multiple("Product", new string[] { "item3", "item2", null });
-            Assert.AreEqual("Product", cu.ItemDescription);
-            Assert.AreEqual(49.92M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldMultipleElementsAndNotThrowAnExceptionWhenIdentifierIsNull()
-        {
-            CalculationUnit cu = calculator.Multiple(null, new string[] { "item3", "item2" });
-            Assert.AreEqual("ProductResult", cu.ItemDescription);
-            Assert.AreEqual(49.92M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldMultipleElementsAndNotThrowAnExceptionWhenDataIsNull()
-        {
-            CalculationUnit cu = calculator.Multiple("Product", null);
-            Assert.AreEqual("Product", cu.ItemDescription);
-            Assert.AreEqual(1M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyDivideElements()
-        {
-            CalculationUnit cu = calculator.Divide("Quotient", "item3", "item2");
-            Assert.AreEqual("Quotient", cu.ItemDescription);
-            Assert.AreEqual(0.8205128205128205128205128205M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyDivideElementsAndNotThrowAnExceptionWhenIdentifierIsNull()
-        {
-            CalculationUnit cu = calculator.Divide(null, "item3", "item2");
-            Assert.AreEqual("QuotientResult", cu.ItemDescription);
-            Assert.AreEqual(0.8205128205128205128205128205M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyDivideElementsAndNotThrowAnExceptionWhenDividentIsNull()
-        {
-            CalculationUnit cu = calculator.Divide("Quotient", null, "item2");
-            Assert.AreEqual("Quotient", cu.ItemDescription);
-            Assert.AreEqual(0M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyDivideElementsAndNotThrowAnExceptionWhenDivisorIsNull()
-        {
-            CalculationUnit cu = calculator.Divide("Quotient", "item3", null);
-            Assert.AreEqual("Quotient", cu.ItemDescription);
-            Assert.AreEqual(0M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyDivideElementsAndNotThrowAnExceptionWhenDivisorEqualsZero()
-        {
-            CalculationUnit cu = calculator.Divide("Quotient", "item3", "zeroItem");
-            Assert.AreEqual("Quotient", cu.ItemDescription);
-            Assert.AreEqual(0M, cu.Item);
-        }
 
         [TestMethod]
         public void ShouldCorrectlyReturnMaximumElement()
@@ -391,51 +253,6 @@ namespace CalculatorLoggerTests.ImplementationsTests
             CalculationUnit cu = calculator.ResolveSwitch("SwitchValue", "item5", null);
             Assert.AreEqual("MultiConditionsInSwitchAreNull", cu.ItemDescription);
             Assert.AreEqual(0M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyResolveBandCondition()
-        {
-            CalculationUnit cu = calculator.ResolveBand("BandValue", "item1", b1);
-            Assert.AreEqual("BandValue", cu.ItemDescription);
-            Assert.AreEqual(4.14M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyResolveBandConditionAndNotThrowAnExceptionWhenIdentifierIsNull()
-        {
-            CalculationUnit cu = calculator.ResolveBand(null, "item1", b1);
-            Assert.AreEqual("BandResult", cu.ItemDescription);
-            Assert.AreEqual(4.14M, cu.Item);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(Exception))]
-        public void ShouldCorrectlyResolveBandConditionAndThrowAnExceptionWhenValueToCompareIsNull()
-        {
-            CalculationUnit cu = calculator.ResolveBand("BandValue", null, b1);
-        }
-
-        [TestMethod]
-        public void ShouldNotThrowAnExceptionWheBandIsNull()
-        {
-            CalculationUnit cu = calculator.ResolveBand("BandValue", "item1", null);
-            Assert.AreEqual("BandIsNull", cu.ItemDescription);
-            Assert.AreEqual(0M, cu.Item);
-        }
-
-        [TestMethod]
-        public void ShouldCorrectlyReturnLogData()
-        {
-            if (calculator is IDataManager)
-            {
-                XDocument doc = ((IDataManager)calculator).GetLogData() as XDocument;
-                if (doc != null)
-                {
-                    Assert.IsInstanceOfType(doc, typeof(XDocument));
-                    Assert.AreEqual("<XmlLogger />", doc.ToString());
-                }
-            }
         }
 
         [TestMethod]

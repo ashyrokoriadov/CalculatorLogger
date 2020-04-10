@@ -43,11 +43,5 @@ namespace CalculatorLoggerLibrary.Interfaces
         /// <param name="result">A result of evaliuation of a statistical expression</param>
         /// <param name="values">Values that were evaluated with using of a statistical expression</param>
         void LogStatisticalFormula(StatisticalOperator op, CalculationUnit result, params CalculationUnit[] values);
-
-        /// <summary>
-        /// A method logs a band.
-        /// </summary>
-        /// <param name="band">A band to be logged</param>
-        void LogBand(Band band);
     }
 }

@@ -13,7 +13,7 @@ namespace CalculatorLoggerLibrary.Implementations
     /// <summary>
     /// A class used to log calculations as an XML.
     /// </summary>
-    public sealed class XMLFormulaLogger : IFormulaLogger, IDataManager
+    public sealed class XMLFormulaLogger : IFormulaLogger
     {
         private int position = 0;
         private object _lockObject = new object();
@@ -283,66 +283,10 @@ namespace CalculatorLoggerLibrary.Implementations
              */
         }
 
-        /// <summary>
-        /// A method logs a band.
-        /// </summary>
-        /// <param name="band">A band to be logged</param>
-        public void LogBand(Band band)
-        {
-            lock (_lockObject)
-            {
-                string datetime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
-                XElement bandElement = new XElement("Band",
-                        new XElement("Name", new XAttribute("position", position.ToString()), new XAttribute("time", datetime), band.Name));
-                position++;
+       
 
-                datetime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
-                XElement EvaluatedValueName = new XElement("EvaluatedValueName",
-                    new XAttribute("position", position.ToString()), new XAttribute("time", datetime), band.ValueToCompare.ItemDescription);
-                bandElement.Add(EvaluatedValueName);
-                position++;
-
-                datetime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
-                XElement EvaluatedValue = new XElement("EvaluatedValue",
-                    new XAttribute("position", position.ToString()), new XAttribute("time", datetime), band.ValueToCompare.Item.ToString());
-                bandElement.Add(EvaluatedValue);
-                position++;
-
-                datetime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
-                XElement MaxValue = new XElement("MaxValue",
-                    new XAttribute("position", position.ToString()), new XAttribute("time", datetime), band.ResultMaxValue);
-                bandElement.Add(MaxValue);
-                position++;
-
-                datetime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
-                XElement ResultValue = new XElement("ResultValue",
-                   new XAttribute("position", position.ToString()), new XAttribute("time", datetime), band.ResultValue.ToString());
-                bandElement.Add(ResultValue);
-                position++;
-
-                XmlLogDocument.Element("XmlLogger").Add(bandElement);
-            }
-
-            /*
-             * Band resolution formula xml log:
-             * <Band>
-             *  <Name position="1" time="2017-11-22 08:39:15.299">CTax</Name>
-             *  <EvaluatedValueName position="2" time="2017-11-22 08:39:15.299">name1</EvaluatedValueName>
-             *  <EvaluatedValue position="3" time="2017-11-22 08:39:15.299">10000</EvaluatedValue>
-             *  <MaxValue position="4" time="2017-11-22 08:39:15.299">15000</MaxValue>
-             *  <ResultValue position="5" time="2017-11-22 08:39:15.316">112.84</ResultValue>
-             * </Band>
-             */
-        }
           
-        /// <summary>
-        /// A method gets data from a logger.
-        /// </summary>
-        /// <returns>An object representing logged data.</returns>
-        public object GetLogData()
-        {
-            return XmlLogDocument;
-        }
+       
 
         #region Private Methods
         private void LogCondition(SingleCondition sc, string newValueName, XElement element)

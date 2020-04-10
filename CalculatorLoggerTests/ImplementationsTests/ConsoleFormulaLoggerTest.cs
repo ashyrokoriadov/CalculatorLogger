@@ -99,12 +99,6 @@ namespace CalculatorLoggerTests.ImplementationsTests
             logger.LogSwitch(new MultiCondition[] { mc1, mc2 }, null);
         }
        
-        [TestMethod]
-        [ExpectedException(typeof(NullReferenceException))]
-        public void LogBand_ShouldThrowAnExceptonWhenBandIsNull()
-        {
-            logger.LogBand(null);
-        }
         
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]

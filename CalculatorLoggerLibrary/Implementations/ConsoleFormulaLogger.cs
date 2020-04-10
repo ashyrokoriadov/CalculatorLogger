@@ -246,43 +246,5 @@ namespace CalculatorLoggerLibrary.Implementations
              * 4|2017-11-22 08:39:15.299|Formula result value| value2
              */
         }
-
-        /// <summary>
-        /// A method logs a band.
-        /// </summary>
-        /// <param name="band">A band to be logged</param>
-        public void LogBand(Band band)
-        {
-            lock (_lockObject)
-            {
-                string datetime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
-                Console.WriteLine("{0} | {1} | {2} | {3}", order.ToString(), datetime, "Band name", band.Name);
-                order++;
-                datetime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
-                Console.WriteLine("{0} | {1} | {2} | {3}", order.ToString(), datetime, "Evaluated value name", band.ValueToCompare.ItemDescription);
-                order++;
-
-                datetime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
-                Console.WriteLine("{0} | {1} | {2} | {3}", order.ToString(), datetime, "Evaluated value", band.ValueToCompare.Item.ToString());
-                order++;
-
-                datetime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
-                Console.WriteLine("{0} | {1} | {2} | {3}", order.ToString(), datetime, "Band max value", band.ResultMaxValue);
-                order++;
-
-                datetime = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff", System.Globalization.CultureInfo.InvariantCulture);
-                Console.WriteLine("{0} | {1} | {2} | {3}", order.ToString(), datetime, "Band result value", band.ResultValue.ToString());
-                order++;
-            }
-            /*
-             * Band resolution formula log:
-             * 1|2017-11-22 08:39:15.299|Band name|CTax
-             * 2|2017-11-22 08:39:15.299|Evaluated value name|name1
-             * 3|2017-11-22 08:39:15.299|Evaluated value|10000
-             * 4|2017-11-22 08:39:15.299|Band max value|15000
-             * 5|2017-11-22 08:39:15.316|Band result value|112.84
-             */
-        }
-
     }
 }

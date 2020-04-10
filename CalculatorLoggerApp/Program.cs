@@ -40,11 +40,6 @@ namespace CalculatorLogger
             MultiCondition multiCondition1 = new MultiCondition(LogicOperator.And, new SingleCondition[2] { simpleCondition1, simpleCondition2 }, 111, 222);
             MultiCondition multiCondition2 = new MultiCondition(LogicOperator.And, new SingleCondition[2] { simpleCondition3, simpleCondition4 }, 333, 444);
 
-            Dictionary<decimal, decimal> testBand = new Dictionary<decimal, decimal>();
-            testBand.Add(10, 1.28M);
-            testBand.Add(20, 1.29M);
-            testBand.Add(30, 1.30M);
-            Band band = new Band("TaxBand", testBand);
             #endregion
 
             #region Console Logger
@@ -58,12 +53,10 @@ namespace CalculatorLogger
             calc["SwitchTest"] = 15M;
             calc["ExpectedResult"] = 18.18M;
 
-            calc.Add("AddValueResult", new string[] { "TestValue1", "TestValue2" });
             calc.Max("Max value of 4 items", new string[] { "TestValue1", "TestValue2", "TestValue3", "TestValue5" });
             calc.ResolveCondition("XML log value name", "TestValue1", simpleCondition1, true);
             calc.ResolveMultiCondition("XML log MC value name", "TestValue1", multiCondition1, true);
             calc.ResolveSwitch("SwitchOutputValue", "SwitchTest", new MultiCondition[2] { multiCondition1, multiCondition2 });
-            calc.ResolveBand("TestBandName", "ExpectedResult", band);
             #endregion
 
             #region XML Logger
@@ -76,19 +69,11 @@ namespace CalculatorLogger
             xmlCalc["SwitchTest"] = 15M;
             xmlCalc["ExpectedResult"] = 18.18M;
 
-            xmlCalc.Add("AddValueResult", new string[] { "TestValue1", "TestValue2" });
             xmlCalc.Max("Max value of 4 items", new string[] { "TestValue1", "TestValue2", "TestValue3", "TestValue5" });            
             xmlCalc.ResolveCondition("XML log value name", "TestValue1", simpleCondition1, true);
             xmlCalc.ResolveMultiCondition("XML log MC value name", "TestValue1", multiCondition1, true);            
             xmlCalc.ResolveSwitch("SwitchOutputValue", "SwitchTest", new MultiCondition[2] { multiCondition1, multiCondition2 });
-            xmlCalc.ResolveBand("TestBandName", "ExpectedResult", band);
-            
-            if (xmlCalc is IDataManager)
-            {
-                XDocument doc = ((IDataManager)xmlCalc).GetLogData() as XDocument;
-                if (doc != null)
-                    doc.Save(logPath);
-            }
+           
             #endregion
 
             Console.ReadKey();
