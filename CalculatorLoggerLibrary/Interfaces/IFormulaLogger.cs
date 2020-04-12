@@ -17,26 +17,6 @@ namespace CalculatorLoggerLibrary.Interfaces
         void LogOperation(MathOperator op, CalculationUnit result, params CalculationUnit[] values);
 
         /// <summary>
-        /// A method logs a resolving of <c>SingleCondition</c>.
-        /// </summary>
-        /// <param name="sc">A single condition to be resolved</param>
-        /// <param name="newValueName">A name of a single condition result to be used in calculations</param>
-        void LogCondition(SingleCondition sc, string newValueName);
-
-        /// <summary>
-        /// A method logs a resolving of <c>MultiCondition</c>.
-        /// </summary>
-        /// <param name="mc">A multi condition to be resolved</param>
-        void LogMultiCondition(MultiCondition mc);
-
-        /// <summary>
-        /// A method logs a switch resolving.
-        /// </summary>
-        /// <param name="mc">An array of multi conditions that were used to create a switch</param>
-        /// <param name="result">A result returned be a switch resolving</param>
-        void LogSwitch(MultiCondition[] mc, CalculationUnit result);
-
-        /// <summary>
         /// A method log a statistical formula.
         /// </summary>
         /// <param name="op">A statistical operator that was used in a calculation</param>

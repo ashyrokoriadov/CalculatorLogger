@@ -3,7 +3,7 @@
     /// <summary>
     /// An interface to be implemented by a class that contains all calculations.
     /// </summary>
-    public interface ICalculator : IStatisticalOperation, IConditionResolver
+    public interface ICalculator 
     {
         /// <summary>
         /// Returns an instance of <c>IFormulaLogger</c> object.

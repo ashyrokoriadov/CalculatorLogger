@@ -32,48 +32,8 @@ namespace CalculatorLogger
             CalculationUnit calculationUnit3 = new CalculationUnit(-8M, "TestValue9");
             CalculationUnit calculationUnit4 = new CalculationUnit(14M, "TestValue10");
 
-            SingleCondition simpleCondition1 = new SingleCondition(ConditionOperator.GreaterThan, calculationUnit1, 1, 2);
-            SingleCondition simpleCondition2 = new SingleCondition(ConditionOperator.GreaterThan, calculationUnit2, 3, 4);
-            SingleCondition simpleCondition3 = new SingleCondition(ConditionOperator.GreaterThan, calculationUnit3, 5, 6);
-            SingleCondition simpleCondition4 = new SingleCondition(ConditionOperator.GreaterThan, calculationUnit4, 7, 8);
+       
 
-            MultiCondition multiCondition1 = new MultiCondition(LogicOperator.And, new SingleCondition[2] { simpleCondition1, simpleCondition2 }, 111, 222);
-            MultiCondition multiCondition2 = new MultiCondition(LogicOperator.And, new SingleCondition[2] { simpleCondition3, simpleCondition4 }, 333, 444);
-
-            #endregion
-
-            #region Console Logger
-            IFormulaLogger ConsoleLogger = new ConsoleFormulaLogger();
-            ICalculator calc = new StandardCalculator(ConsoleLogger);
-            calc["TestValue1"] = -10.4M;
-            calc["TestValue2"] = 12.8M;
-            calc["TestValue3"] = 13.7M;
-            calc["TestValue5"] = 2.34M;
-            calc["TestValue6"] = -18.0M;
-            calc["SwitchTest"] = 15M;
-            calc["ExpectedResult"] = 18.18M;
-
-            calc.Max("Max value of 4 items", new string[] { "TestValue1", "TestValue2", "TestValue3", "TestValue5" });
-            calc.ResolveCondition("XML log value name", "TestValue1", simpleCondition1, true);
-            calc.ResolveMultiCondition("XML log MC value name", "TestValue1", multiCondition1, true);
-            calc.ResolveSwitch("SwitchOutputValue", "SwitchTest", new MultiCondition[2] { multiCondition1, multiCondition2 });
-            #endregion
-
-            #region XML Logger
-            ICalculator xmlCalc = new StandardCalculator(logger);
-            xmlCalc["TestValue1"] = -10.4M;
-            xmlCalc["TestValue2"] = 12.8M;
-            xmlCalc["TestValue3"] = 13.7M;
-            xmlCalc["TestValue5"] = 2.34M;
-            xmlCalc["TestValue6"] = -18.0M;
-            xmlCalc["SwitchTest"] = 15M;
-            xmlCalc["ExpectedResult"] = 18.18M;
-
-            xmlCalc.Max("Max value of 4 items", new string[] { "TestValue1", "TestValue2", "TestValue3", "TestValue5" });            
-            xmlCalc.ResolveCondition("XML log value name", "TestValue1", simpleCondition1, true);
-            xmlCalc.ResolveMultiCondition("XML log MC value name", "TestValue1", multiCondition1, true);            
-            xmlCalc.ResolveSwitch("SwitchOutputValue", "SwitchTest", new MultiCondition[2] { multiCondition1, multiCondition2 });
-           
             #endregion
 
             Console.ReadKey();

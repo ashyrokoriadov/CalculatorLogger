@@ -300,116 +300,11 @@ namespace CalculatorLoggerLibrary.Implementations
             return StatisticalOperation(resultValueName, GetAverage, StatisticalOperator.Avg, values);
         }
 
-        /// <summary>
-        /// Resolves a single condition.
-        /// </summary>
-        /// <param name="resultValueName">A name of result to be used in further calculations</param>
-        /// <param name="valueToCompare">A string indetifier in an internal collection</param>
-        /// <param name="SimpleCondition">A simple condition to be resolved</param>
-        /// <param name="log">A flag to indetify whether the method execution has to be logged</param>
-        /// <returns>A result of simple condition resolving</returns>
-        public CalculationUnit ResolveCondition(string resultValueName, string valueToCompare, SingleCondition SimpleCondition, bool log = false)
-        {
-            decimal value = 0M;
-            bool Exists = false; 
-            if (!string.IsNullOrEmpty(valueToCompare))
-            {
-                Exists = _dictionary.TryGetValue(valueToCompare, out value);
-            }
+      
 
-            if(Exists)
-            {
-                CalculationUnit valueToCompareCU = new CalculationUnit(value, valueToCompare);
-                if (SimpleCondition != null)
-                {
-                    SimpleCondition.SetResult(valueToCompareCU);
-                    if (log)
-                    {
-                        FormulaLogger.LogCondition(SimpleCondition, resultValueName);
-                    }
-
-                    return new CalculationUnit(SimpleCondition.ConditionValue, resultValueName != null ? resultValueName : "SingleConditionResult");
-                }
-
-                return new CalculationUnit(0M, "SingleConditionIsNull");
-            }
-
-            throw new Exception(string.Format("The value corresponding {0} key was not found", valueToCompare));            
-        }
-
-        /// <summary>
-        /// Resolves a multi condition.
-        /// </summary>
-        /// <param name="resultValueName">A name of result to be used in further calculations</param>
-        /// <param name="valueToCompare">A string indetifier in an internal collection</param>
-        /// <param name="MultiCondition">A multi condition to be resolved</param>
-        /// <param name="log">A flag to indetify whether the method execution has to be logged</param>
-        /// <returns>A result of multi condition resolving</returns>
-        public CalculationUnit ResolveMultiCondition(string resultValueName, string valueToCompare, MultiCondition MultiCondition, bool log = false)
-        {
-            decimal value = 0M;
-            bool Exists = false;
-            if (!string.IsNullOrEmpty(valueToCompare))
-            {
-                Exists = _dictionary.TryGetValue(valueToCompare, out value);
-            }
-
-            if (Exists)
-            {
-                CalculationUnit valueToCompareCU = new CalculationUnit(value, valueToCompare);
-                if (MultiCondition != null)
-                {
-                    MultiCondition.SetResult(valueToCompareCU);
-                    if (log)
-                    {
-                        FormulaLogger.LogMultiCondition(MultiCondition);
-                    }
-
-                    return new CalculationUnit(MultiCondition.ConditionValue, resultValueName != null ? resultValueName : "MultiConditionResult");
-                }
-
-                return new CalculationUnit(0M, "MultiConditionIsNull");
-            }
-
-            throw new Exception(string.Format("The value corresponding \"{0}\" key was not found", valueToCompare));
-        }
+      
         
-        /// <summary>
-        /// Resolves a switch expression.
-        /// </summary>
-        /// <param name="resultValueName">A name of result to be used in further calculations</param>
-        /// <param name="valueToCompare">A string indetifier in an internal collection</param>
-        /// <param name="MultiConditions">An array of multi conditions that forms a switch expression</param>
-        /// <returns>A result of switch expression resolving</returns>
-        public CalculationUnit ResolveSwitch(string resultValueName, string valueToCompare, MultiCondition[] MultiConditions)
-        {
-            decimal value = 0M;
-            bool Exists = false;
-            if (!string.IsNullOrEmpty(valueToCompare))
-            {
-                Exists = _dictionary.TryGetValue(valueToCompare, out value);
-            }
-
-            if (Exists)
-            {
-                CalculationUnit valueToCompareCU = new CalculationUnit(value, valueToCompare);
-                if (MultiConditions != null)
-                {
-                    foreach (MultiCondition mc in MultiConditions)
-                    {
-                        mc.SetResult(valueToCompareCU);
-                    }
-
-                    Switch SwitchExpression = new Switch(MultiConditions, resultValueName != null ? resultValueName : "SwitchResult");
-                    CalculationUnit ResultCalcUnit = new CalculationUnit(SwitchExpression.SwitchValue, SwitchExpression.SwitchResultName);
-                    _formulaLogger.LogSwitch(MultiConditions, ResultCalcUnit);
-                    return ResultCalcUnit;
-                }
-                return new CalculationUnit(0M, "MultiConditionsInSwitchAreNull");
-            }
-
-            throw new Exception(string.Format("The value corresponding \"{0}\" key was not found", valueToCompare));         
-        }
+       
 
         #region Private Methods
         private decimal GetMax(CalculationUnit[] data)
