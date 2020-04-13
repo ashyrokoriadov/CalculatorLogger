@@ -1,0 +1,10 @@
+﻿################################################################################
+# Ten plik .gitignore został utworzony automatycznie przez Microsoft(R) Visual Studio.
+################################################################################
+
+/CalculatorLogger/obj/x86/Debug/CalculatorLoggerApp.csproj.CoreCompileInputs.cache
+/CalculatorLogger/obj/x86/Debug/CalculatorLoggerApp.csprojAssemblyReference.cache
+/CalculatorLogger/obj/x86/Release/CalculatorLoggerApp.csproj.CoreCompileInputs.cache
+/CalculatorLoggerLibrary/obj/Debug/CalculatorLoggerLibrary.csproj.CoreCompileInputs.cache
+/CalculatorLoggerLibrary/obj/Debug/CalculatorLoggerLibrary.csprojAssemblyReference.cache
+/CalculatorLoggerLibrary/obj/Release/CalculatorLoggerLibrary.csproj.CoreCompileInputs.cache

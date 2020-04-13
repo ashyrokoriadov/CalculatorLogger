@@ -50,19 +50,10 @@
     <Compile Include="Static\OperatorConverter.cs" />
     <Compile Include="Implementations\StandardCalculator.cs" />
     <Compile Include="Implementations\XMLFormulaLogger.cs" />
-    <Compile Include="Interfaces\IBandResolver.cs" />
-    <Compile Include="Interfaces\IBasicOperations.cs" />
     <Compile Include="Interfaces\ICalculator.cs" />
-    <Compile Include="Interfaces\IConditionResolver.cs" />
-    <Compile Include="Interfaces\IDataManager.cs" />
     <Compile Include="Interfaces\IFormulaLogger.cs" />
-    <Compile Include="Interfaces\IStatisticalOperation.cs" />
     <Compile Include="Models\CalculationUnit.cs" />
     <Compile Include="Models\Enumerations.cs" />
-    <Compile Include="Models\Operations\Band.cs" />
-    <Compile Include="Models\Operations\Condition.cs" />
-    <Compile Include="Models\Operations\MultiCondition.cs" />
-    <Compile Include="Models\Operations\SingleCondition.cs" />
     <Compile Include="Models\Operations\Switch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
