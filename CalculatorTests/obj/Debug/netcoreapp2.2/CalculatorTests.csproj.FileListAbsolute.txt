@@ -32,3 +32,5 @@ D:\GIT\CalculatorLogger\CalculatorTests\obj\Debug\netcoreapp2.2\CalculatorTests.
 D:\GIT\CalculatorLogger\CalculatorTests\obj\Debug\netcoreapp2.2\CalculatorTests.csproj.CopyComplete
 D:\GIT\CalculatorLogger\CalculatorTests\obj\Debug\netcoreapp2.2\CalculatorTests.dll
 D:\GIT\CalculatorLogger\CalculatorTests\obj\Debug\netcoreapp2.2\CalculatorTests.pdb
+D:\GIT\CalculatorLogger\CalculatorTests\bin\Debug\netcoreapp2.2\LoggingCalculator.AbstractionsAndModels.dll
+D:\GIT\CalculatorLogger\CalculatorTests\bin\Debug\netcoreapp2.2\LoggingCalculator.AbstractionsAndModels.pdb

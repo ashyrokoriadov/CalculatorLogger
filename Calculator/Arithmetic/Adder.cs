@@ -1,32 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Calculator.Abstractions.Arithmetic;
-using Calculator.Abstractions.Validators;
-using Calculator.Models;
+using LoggingCalculator.AbstractionsAndModels.Arithmetic;
+using LoggingCalculator.AbstractionsAndModels.Models;
 
 namespace Calculator.Arithmetic
 {
-    public class Adder : ArithmeticBase, IAdder<CalculatorValue>
+    public class Adder :  IAdder<CalculatorValue>
     {
-        public Adder(IArithmeticValidator<CalculatorValue> validator)
-            : base(validator)
-        { }
-
         public CalculatorValue Add(CalculatorValue valueX, CalculatorValue valueY)
         {
-            if (ValidateInput(valueX, valueY))
-                return CalculatorValue.Empty();
-
             return new CalculatorValue(valueX.Value + valueY.Value, $"{valueX.Name} + {valueY.Name}" );
         }
 
         public CalculatorValue Add(IEnumerable<CalculatorValue> values)
         {
             var valuesAsArray = values?.ToArray() ?? new CalculatorValue[0];
-
-            if (ValidateInput(valuesAsArray))
-                return CalculatorValue.Empty();
 
             return Calculate(valuesAsArray);
         }

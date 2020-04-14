@@ -1,7 +1,7 @@
-﻿using Calculator.Abstractions.Conditions;
-using Calculator.Conditions;
-using Calculator.Enums;
-using Calculator.Models;
+﻿using Calculator.Conditions;
+using LoggingCalculator.AbstractionsAndModels.Conditions;
+using LoggingCalculator.AbstractionsAndModels.Enums;
+using LoggingCalculator.AbstractionsAndModels.Models;
 using NUnit.Framework;
 
 namespace CalculatorTests.Conditions

@@ -1,15 +1,10 @@
-﻿using Calculator.Abstractions.Arithmetic;
-using Calculator.Abstractions.Validators;
-using Calculator.Arithmetic;
-using Calculator.Models;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace CalculatorTests.Arithmetic
 {
     public abstract class ArithmeticTestsBase<T>
     {
         protected T SystemUnderTests;
-        protected IArithmeticValidator<CalculatorValue> ArithmeticValidatorMock;
 
         protected ArithmeticTestsBase()
         {
@@ -19,8 +14,6 @@ namespace CalculatorTests.Arithmetic
         [SetUp]
         public virtual void Setup()
         {
-            if (ArithmeticValidatorMock == null)
-                ArithmeticValidatorMock = Mocks.ArithmeticValidatorMock.GetMock();
             InitializeSystemUnderTests();
         }
 

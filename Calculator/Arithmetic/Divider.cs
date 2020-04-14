@@ -1,33 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Calculator.Abstractions.Arithmetic;
-using Calculator.Abstractions.Validators;
-using Calculator.Models;
+using LoggingCalculator.AbstractionsAndModels.Arithmetic;
+using LoggingCalculator.AbstractionsAndModels.Models;
 
 namespace Calculator.Arithmetic
 {
-    public class Divider : ArithmeticBase, IDivider<CalculatorValue>
+    public class Divider : IDivider<CalculatorValue>
     {
-        public Divider(IArithmeticValidator<CalculatorValue> validator) : base(validator)
-        {
-        }
-
         public CalculatorValue Divide(CalculatorValue valueX, CalculatorValue valueY)
         {
-            if (ValidateInput(valueX, valueY))
-                return CalculatorValue.Empty();
-
-            return new CalculatorValue(valueX.Value / valueY.Value, $"{valueX.Name} / {valueY.Name}");
+           return new CalculatorValue(valueX.Value / valueY.Value, $"{valueX.Name} / {valueY.Name}");
         }
 
         public CalculatorValue Divide(IEnumerable<CalculatorValue> values, CalculatorValue dividend)
         {
             var valuesAsArray = values?.ToArray() ?? new CalculatorValue[0];
-
-            if (ValidateInput(valuesAsArray) || Validator.ValidateIsNull(dividend))
-                return CalculatorValue.Empty();
 
             return Calculate(valuesAsArray, dividend);
         }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Calculator.Abstractions.Bands;
-using Calculator.Abstractions.Validators;
-using Calculator.Bands;
-using Calculator.Models;
+﻿using System.Collections.Generic;
+using LoggingCalculator.AbstractionsAndModels.Bands;
+using LoggingCalculator.AbstractionsAndModels.Models;
 using NUnit.Framework;
 
 namespace CalculatorTests.Bands
@@ -12,14 +8,10 @@ namespace CalculatorTests.Bands
     abstract class BandResolverTests
     {
         protected IBandResolver<CalculatorValue> SystemUnderTests;
-        protected IArithmeticValidator<CalculatorValue> ArithmeticValidatorMock;
 
         [SetUp]
         public virtual void Setup()
         {
-            if (ArithmeticValidatorMock == null)
-                ArithmeticValidatorMock = Mocks.ArithmeticValidatorMock.GetMock();
-
             var bands = new Dictionary<decimal, decimal>(new[]
             {
                 new KeyValuePair<decimal, decimal>(0M, 1.25M),

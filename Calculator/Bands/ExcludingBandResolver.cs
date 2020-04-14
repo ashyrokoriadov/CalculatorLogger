@@ -1,15 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Calculator.Abstractions.Validators;
-using Calculator.Models;
+using LoggingCalculator.AbstractionsAndModels.Models;
 
 namespace Calculator.Bands
 {
     public class ExcludingBandResolver : BandResolver
     {
-        public ExcludingBandResolver(
-            IArithmeticValidator<CalculatorValue> validator
-            , Dictionary<decimal, decimal> bands) : base(validator, bands)
+        public ExcludingBandResolver(Dictionary<decimal, decimal> bands) : base( bands)
         {}
 
         protected override decimal SelectKey(CalculatorValue value)

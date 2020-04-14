@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Calculator.Abstractions.Validators;
-using Calculator.Models;
+﻿using LoggingCalculator.AbstractionsAndModels.Models;
 using NUnit.Framework;
 
 namespace CalculatorTests.Aggregations
@@ -10,7 +6,6 @@ namespace CalculatorTests.Aggregations
     public abstract class AggregationTestBase<T>
     {
         protected T SystemUnderTests;
-        protected IArithmeticValidator<CalculatorValue> ArithmeticValidatorMock;
 
         protected AggregationTestBase()
         {
@@ -20,8 +15,6 @@ namespace CalculatorTests.Aggregations
         [SetUp]
         public virtual void Setup()
         {
-            if (ArithmeticValidatorMock == null)
-                ArithmeticValidatorMock = Mocks.ArithmeticValidatorMock.GetMock();
             InitializeSystemUnderTests();
         }
 

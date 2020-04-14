@@ -1,5 +1,5 @@
-﻿using Calculator.Abstractions.Conditions;
-using Calculator.Models;
+﻿using LoggingCalculator.AbstractionsAndModels.Conditions;
+using LoggingCalculator.AbstractionsAndModels.Models;
 
 namespace Calculator.Conditions
 {

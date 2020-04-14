@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Calculator.Abstractions.Conditions;
-using Calculator.Enums;
-using Calculator.Models;
+using LoggingCalculator.AbstractionsAndModels.Conditions;
+using LoggingCalculator.AbstractionsAndModels.Enums;
+using LoggingCalculator.AbstractionsAndModels.Models;
 
 namespace Calculator.Conditions
 {

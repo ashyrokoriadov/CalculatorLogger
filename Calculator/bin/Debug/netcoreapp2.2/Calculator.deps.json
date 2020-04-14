@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v2.2": {
       "Calculator/1.0.0": {
+        "dependencies": {
+          "LoggingCalculator.AbstractionsAndModels": "1.0.0"
+        },
         "runtime": {
           "Calculator.dll": {}
+        }
+      },
+      "LoggingCalculator.AbstractionsAndModels/1.0.0": {
+        "runtime": {
+          "LoggingCalculator.AbstractionsAndModels.dll": {}
         }
       }
     }
   },
   "libraries": {
     "Calculator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LoggingCalculator.AbstractionsAndModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

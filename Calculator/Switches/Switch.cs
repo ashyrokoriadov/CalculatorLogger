@@ -1,9 +1,8 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Calculator.Abstractions.Conditions;
-using Calculator.Abstractions.Switch;
-using Calculator.Models;
+using LoggingCalculator.AbstractionsAndModels.Conditions;
+using LoggingCalculator.AbstractionsAndModels.Models;
+using LoggingCalculator.AbstractionsAndModels.Switches;
 
 namespace Calculator.Switches
 {

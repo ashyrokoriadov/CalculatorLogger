@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Calculator.Abstractions.Arithmetic;
 using Calculator.Arithmetic;
-using Calculator.Models;
+using LoggingCalculator.AbstractionsAndModels.Arithmetic;
+using LoggingCalculator.AbstractionsAndModels.Models;
 using NUnit.Framework;
 
 namespace CalculatorTests.Arithmetic
@@ -13,7 +11,7 @@ namespace CalculatorTests.Arithmetic
     {
         protected override void InitializeSystemUnderTests()
         {
-            SystemUnderTests = new Divider(ArithmeticValidatorMock);
+            SystemUnderTests = new Divider();
         }
 
         [TestCaseSource(nameof(SubtractionTwoValuesCaseSource))]
@@ -43,26 +41,6 @@ namespace CalculatorTests.Arithmetic
             Assert.AreEqual(expectedResult.Name, actualResult.Name);
         }
 
-        [TestCaseSource(nameof(SubtractionTwoValuesNullCaseSource))]
-        public void Has_to_return_empty_object_if_empty_array_is_passed(CalculatorValue valueX, CalculatorValue valueY)
-        {
-            var actualResult = SystemUnderTests.Divide(valueX, valueY);
-            var expectedResult = CalculatorValue.Empty();
-            Assert.AreEqual(expectedResult.Value, actualResult.Value);
-            Assert.AreEqual(expectedResult.Name, actualResult.Name);
-        }
-
-        [TestCaseSource(nameof(SubtractionSeveralValuesNullCaseSource))]
-        public void Has_to_return_empty_object_if_empty_values_are_passed(
-            IEnumerable<CalculatorValue> emptyOrNullEnumerable
-            , CalculatorValue minuend)
-        {
-            var expectedResult = CalculatorValue.Empty();
-            var actualResult = SystemUnderTests.Divide(emptyOrNullEnumerable, minuend);
-            Assert.AreEqual(expectedResult.Value, actualResult.Value);
-            Assert.AreEqual(expectedResult.Name, actualResult.Name);
-        }
-
         static readonly object[] SubtractionTwoValuesCaseSource =
         {
             new object[] {6.0M, 3.0M, 2.0M },
@@ -77,21 +55,6 @@ namespace CalculatorTests.Arithmetic
             new object[] {new []{50.0M, 3.0M, 1.0M}, 150.0M, 1.0M,  "value", "value / value / value / value"  },
             new object[] {new []{39.0M, 2.0M, -5.0M, -1.0M}, 390.0M, 1.0M, "value", "value / value / value / value / value" },
             new object[] {new []{9.0M, 5.0M, 2.0M, -1.0M}, 45.0M, -0.5M, "value", "value / value / value / value / value" }
-        };
-
-        static readonly object[] SubtractionTwoValuesNullCaseSource =
-        {
-            new object[] {new CalculatorValue(2.0M), null },
-            new object[] {null, null }
-        };
-
-        static readonly object[] SubtractionSeveralValuesNullCaseSource =
-        {
-            new object[] {Enumerable.Empty<CalculatorValue>(), new CalculatorValue(10.0M)  },
-            new object[] {Enumerable.Empty<CalculatorValue>(), null  },
-            new object[] {null, new CalculatorValue(10.0M) },
-            new object[] {null, null },
-            new object[] { new[] { new CalculatorValue(1.0M), new CalculatorValue(2.0M) }, null }
         };
     }
 }

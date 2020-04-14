@@ -2,32 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Calculator.Abstractions.Arithmetic;
-using Calculator.Abstractions.Validators;
-using Calculator.Models;
+using LoggingCalculator.AbstractionsAndModels.Arithmetic;
+using LoggingCalculator.AbstractionsAndModels.Models;
 
 namespace Calculator.Arithmetic
 {
-    public class Multiplier : ArithmeticBase, IMultiplier<CalculatorValue>
+    public class Multiplier : IMultiplier<CalculatorValue>
     {
-        public Multiplier(IArithmeticValidator<CalculatorValue> validator)
-            : base(validator)
-        { }
-
         public CalculatorValue Multiply(CalculatorValue valueX, CalculatorValue valueY)
         {
-            if (ValidateInput(valueX, valueY))
-                return CalculatorValue.Empty();
-
             return new CalculatorValue(valueX.Value * valueY.Value, $"{valueX.Name} * {valueY.Name}");
         }
 
         public CalculatorValue Multiply(IEnumerable<CalculatorValue> values)
         {
             var valuesAsArray = values?.ToArray() ?? new CalculatorValue[0];
-
-            if (ValidateInput(valuesAsArray))
-                return CalculatorValue.Empty();
 
             return Calculate(valuesAsArray);
         }

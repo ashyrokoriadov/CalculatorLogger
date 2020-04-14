@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Calculator.Abstractions.Conditions;
-using Calculator.Abstractions.Switch;
 using Calculator.Conditions;
-using Calculator.Enums;
-using Calculator.Models;
 using Calculator.Switches;
+using LoggingCalculator.AbstractionsAndModels.Conditions;
+using LoggingCalculator.AbstractionsAndModels.Enums;
+using LoggingCalculator.AbstractionsAndModels.Models;
+using LoggingCalculator.AbstractionsAndModels.Switches;
 using NUnit.Framework;
 
 namespace CalculatorTests.Switches

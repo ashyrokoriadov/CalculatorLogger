@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Calculator.Abstractions.Bands;
-using Calculator.Abstractions.Conditions;
-using Calculator.Abstractions.Validators;
-using Calculator.Conditions;
-using Calculator.Enums;
-using Calculator.Models;
+﻿using Calculator.Conditions;
+using LoggingCalculator.AbstractionsAndModels.Conditions;
+using LoggingCalculator.AbstractionsAndModels.Enums;
+using LoggingCalculator.AbstractionsAndModels.Models;
 using NUnit.Framework;
 
 namespace CalculatorTests.Conditions

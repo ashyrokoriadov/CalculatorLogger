@@ -1,0 +1,8 @@
+D:\GIT\CalculatorLogger\LoggingCalculator.Abstractions\bin\Debug\netcoreapp2.2\LoggingCalculator.AbstractionsAndModels.deps.json
+D:\GIT\CalculatorLogger\LoggingCalculator.Abstractions\bin\Debug\netcoreapp2.2\LoggingCalculator.AbstractionsAndModels.dll
+D:\GIT\CalculatorLogger\LoggingCalculator.Abstractions\bin\Debug\netcoreapp2.2\LoggingCalculator.AbstractionsAndModels.pdb
+D:\GIT\CalculatorLogger\LoggingCalculator.Abstractions\obj\Debug\netcoreapp2.2\LoggingCalculator.AbstractionsAndModels.csproj.CoreCompileInputs.cache
+D:\GIT\CalculatorLogger\LoggingCalculator.Abstractions\obj\Debug\netcoreapp2.2\LoggingCalculator.AbstractionsAndModels.AssemblyInfoInputs.cache
+D:\GIT\CalculatorLogger\LoggingCalculator.Abstractions\obj\Debug\netcoreapp2.2\LoggingCalculator.AbstractionsAndModels.AssemblyInfo.cs
+D:\GIT\CalculatorLogger\LoggingCalculator.Abstractions\obj\Debug\netcoreapp2.2\LoggingCalculator.AbstractionsAndModels.dll
+D:\GIT\CalculatorLogger\LoggingCalculator.Abstractions\obj\Debug\netcoreapp2.2\LoggingCalculator.AbstractionsAndModels.pdb

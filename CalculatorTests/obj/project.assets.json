@@ -1677,11 +1677,24 @@
       "Calculator/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "LoggingCalculator.AbstractionsAndModels": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Calculator.dll": {}
         },
         "runtime": {
           "bin/placeholder/Calculator.dll": {}
+        }
+      },
+      "LoggingCalculator.AbstractionsAndModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/LoggingCalculator.AbstractionsAndModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LoggingCalculator.AbstractionsAndModels.dll": {}
         }
       }
     }
@@ -5904,6 +5917,11 @@
       "type": "project",
       "path": "../Calculator/Calculator.csproj",
       "msbuildProject": "../Calculator/Calculator.csproj"
+    },
+    "LoggingCalculator.AbstractionsAndModels/1.0.0": {
+      "type": "project",
+      "path": "../LoggingCalculator.Abstractions/LoggingCalculator.AbstractionsAndModels.csproj",
+      "msbuildProject": "../LoggingCalculator.Abstractions/LoggingCalculator.AbstractionsAndModels.csproj"
     }
   },
   "projectFileDependencyGroups": {

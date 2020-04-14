@@ -1,10 +1,8 @@
-﻿using Calculator.Abstractions.Arithmetic;
-using Calculator.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Calculator.Arithmetic;
+using LoggingCalculator.AbstractionsAndModels.Arithmetic;
+using LoggingCalculator.AbstractionsAndModels.Models;
 using NUnit.Framework;
 
 namespace CalculatorTests.Arithmetic
@@ -13,7 +11,7 @@ namespace CalculatorTests.Arithmetic
     {
         protected override void InitializeSystemUnderTests()
         {
-            SystemUnderTests = new Multiplier(ArithmeticValidatorMock);
+            SystemUnderTests = new Multiplier();
         }
 
         [TestCaseSource(nameof(ProductTwoValuesCaseSource))]
@@ -41,24 +39,6 @@ namespace CalculatorTests.Arithmetic
             Assert.AreEqual(expectedResult.Name, actualResult.Name);
         }
 
-        [TestCaseSource(nameof(ProductTwoValuesNullCaseSource))]
-        public void Has_to_return_empty_object_if_empty_array_is_passed(CalculatorValue valueX, CalculatorValue valueY)
-        {
-            var actualResult = SystemUnderTests.Multiply(valueX, valueY);
-            var expectedResult = CalculatorValue.Empty();
-            Assert.AreEqual(expectedResult.Value, actualResult.Value);
-            Assert.AreEqual(expectedResult.Name, actualResult.Name);
-        }
-
-        [TestCaseSource(nameof(ProductSeveralValuesNullCaseSource))]
-        public void Has_to_return_empty_object_if_empty_values_are_passed(IEnumerable<CalculatorValue> emptyOrNullEnumerable)
-        {
-            var expectedResult = CalculatorValue.Empty();
-            var actualResult = SystemUnderTests.Multiply(emptyOrNullEnumerable);
-            Assert.AreEqual(expectedResult.Value, actualResult.Value);
-            Assert.AreEqual(expectedResult.Name, actualResult.Name);
-        }
-
         static readonly object[] ProductTwoValuesCaseSource =
         {
             new object[] {2.0M, 3.0M, 6.0M },
@@ -73,18 +53,6 @@ namespace CalculatorTests.Arithmetic
             new object[] {new []{1.0M, 2.0M, 3.0M}, 6.0M,  "value", "value * value * value"  },
             new object[] {new []{2.0M, 3.0M, 4.0M, 5.0M}, 120.0M, "value", "value * value * value * value" },
             new object[] {new []{2.0M, 0.0M, -2.0M, 3.0M}, 0.0M, "value", "value * value * value * value" }
-        };
-
-        static readonly object[] ProductTwoValuesNullCaseSource =
-        {
-            new object[] {new CalculatorValue(2.0M), null },
-            new object[] {null, null }
-        };
-
-        static readonly object[] ProductSeveralValuesNullCaseSource =
-        {
-            new object[] {Enumerable.Empty<CalculatorValue>() },
-            new object[] {null }
         };
     }
 }

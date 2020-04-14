@@ -16,3 +16,6 @@ D:\GIT\CalculatorLogger\Calculator\obj\Debug\netcoreapp2.2\Calculator.AssemblyIn
 D:\GIT\CalculatorLogger\Calculator\obj\Debug\netcoreapp2.2\Calculator.dll
 D:\GIT\CalculatorLogger\Calculator\obj\Debug\netcoreapp2.2\Calculator.pdb
 D:\GIT\CalculatorLogger\Calculator\obj\Debug\netcoreapp2.2\Calculator.csprojAssemblyReference.cache
+D:\GIT\CalculatorLogger\Calculator\bin\Debug\netcoreapp2.2\LoggingCalculator.AbstractionsAndModels.dll
+D:\GIT\CalculatorLogger\Calculator\bin\Debug\netcoreapp2.2\LoggingCalculator.AbstractionsAndModels.pdb
+D:\GIT\CalculatorLogger\Calculator\obj\Debug\netcoreapp2.2\Calculator.csproj.CopyComplete

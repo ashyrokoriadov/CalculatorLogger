@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Calculator.Abstractions.Aggregations;
-using Calculator.Abstractions.Validators;
-using Calculator.Models;
+using LoggingCalculator.AbstractionsAndModels.Aggregations;
+using LoggingCalculator.AbstractionsAndModels.Models;
 
 namespace Calculator.Aggregations
 {
     public class MaxAggregator : AggregationsBase, IMaxAggregator<CalculatorValue>
     {
-        public MaxAggregator(IArithmeticValidator<CalculatorValue> validator)
-            : base(validator)
+        public MaxAggregator()
         {
             FunctionName = nameof(Max);
         }
@@ -20,9 +17,6 @@ namespace Calculator.Aggregations
 
         public CalculatorValue Max(CalculatorValue valueX, CalculatorValue valueY)
         {
-            if (ValidateInput(valueX, valueY))
-                return CalculatorValue.Empty();
-
             return Max(new[] { valueX, valueY });
         }
 

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Calculator.Abstractions.Arithmetic;
 using Calculator.Arithmetic;
-using Calculator.Models;
+using LoggingCalculator.AbstractionsAndModels.Arithmetic;
+using LoggingCalculator.AbstractionsAndModels.Models;
 using NUnit.Framework;
 
 namespace CalculatorTests.Arithmetic
@@ -11,7 +11,7 @@ namespace CalculatorTests.Arithmetic
     {
         protected override void InitializeSystemUnderTests()
         {
-            SystemUnderTests = new Adder(ArithmeticValidatorMock);
+            SystemUnderTests = new Adder();
         }
 
         [TestCaseSource(nameof(SumTwoValuesCaseSource))]
@@ -39,24 +39,6 @@ namespace CalculatorTests.Arithmetic
             Assert.AreEqual(expectedResult.Name, actualResult.Name);
         }
 
-        [TestCaseSource(nameof(SumTwoValuesNullCaseSource))]
-        public void Has_to_return_empty_object_if_empty_array_is_passed(CalculatorValue valueX, CalculatorValue valueY)
-        {
-            var actualResult = SystemUnderTests.Add(valueX, valueY);
-            var expectedResult = CalculatorValue.Empty();
-            Assert.AreEqual(expectedResult.Value, actualResult.Value);
-            Assert.AreEqual(expectedResult.Name, actualResult.Name);
-        }
-
-        [TestCaseSource(nameof(SumSeveralValuesNullCaseSource))]
-        public void Has_to_return_empty_object_if_empty_values_are_passed(IEnumerable<CalculatorValue> emptyOrNullEnumerable)
-        {
-            var expectedResult = CalculatorValue.Empty();
-            var actualResult = SystemUnderTests.Add(emptyOrNullEnumerable);
-            Assert.AreEqual(expectedResult.Value, actualResult.Value);
-            Assert.AreEqual(expectedResult.Name, actualResult.Name);
-        }
-
         static readonly object[] SumTwoValuesCaseSource =
         {
             new object[] {2.0M, 3.0M, 5.0M },
@@ -71,18 +53,6 @@ namespace CalculatorTests.Arithmetic
             new object[] {new []{1.0M, 2.0M, 3.0M}, 6.0M,  "value", "value + value + value"  },
             new object[] {new []{2.0M, 3.0M, 4.0M, 5.0M}, 14.0M, "value", "value + value + value + value" },
             new object[] {new []{2.0M, 0.0M, -2.0M, 3.0M}, 3.0M, "value", "value + value + value + value" }
-        };
-
-        static readonly object[] SumTwoValuesNullCaseSource =
-        {
-            new object[] {new CalculatorValue(2.0M), null },
-            new object[] {null, null }
-        };
-
-        static readonly object[] SumSeveralValuesNullCaseSource =
-        {
-            new object[] {Enumerable.Empty<CalculatorValue>() },
-            new object[] {null }
         };
     }
 }

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Calculator.Bands;
-using Calculator.Models;
+using LoggingCalculator.AbstractionsAndModels.Models;
 using NUnit.Framework;
 
 namespace CalculatorTests.Bands
@@ -11,7 +9,7 @@ namespace CalculatorTests.Bands
     {
         protected override void InitializeSystemUnderTests(Dictionary<decimal, decimal> bands)
         {
-            SystemUnderTests = new IncludingBandResolver(ArithmeticValidatorMock, bands);
+            SystemUnderTests = new IncludingBandResolver(bands);
         }
 
         [TestCaseSource(nameof(BandValuesCaseSource))]
@@ -23,14 +21,6 @@ namespace CalculatorTests.Bands
             var actualResult = SystemUnderTests.Resolve(calculatorValue);
             Assert.AreEqual(expectedResult.Value, actualResult.Value);
             Assert.AreEqual(expectedResult.Name, actualResult.Name);
-        }
-
-        [Test]
-        public void Has_to_return_empty_value_for_band_if_null_value_is_passed()
-        {
-            var actualResult = SystemUnderTests.Resolve(null);
-            Assert.AreEqual(0.0M, actualResult.Value);
-            Assert.AreEqual("NULL", actualResult.Name);
         }
 
         static readonly object[] BandValuesCaseSource =

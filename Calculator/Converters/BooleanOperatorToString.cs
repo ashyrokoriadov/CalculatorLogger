@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Calculator.Abstractions.Converters;
-using Calculator.Enums;
+﻿using LoggingCalculator.AbstractionsAndModels.Converters;
+using LoggingCalculator.AbstractionsAndModels.Enums;
 
 namespace Calculator.Converters
 {
