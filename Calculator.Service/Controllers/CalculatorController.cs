@@ -18,12 +18,24 @@ namespace Calculator.Service.Controllers
         }
 
         [HttpGet("Add")]
+        public ActionResult<CalculatorValue> Add([FromBody]CalculatorPayload payload)
+        {
+            return Ok(_calculator.Add(payload.ValueX, payload.ValueY));
+        }
+
+        [HttpGet("AddEnumerable")]
         public ActionResult<CalculatorValue> Add([FromBody]IEnumerable<CalculatorValue> values)
         {
             return Ok(_calculator.Add(values));
         }
 
         [HttpGet("Average")]
+        public ActionResult<CalculatorValue> Average([FromBody]CalculatorPayload payload)
+        {
+            return Ok(_calculator.Average(payload.ValueX, payload.ValueY));
+        }
+
+        [HttpGet("AverageEnumerable")]
         public ActionResult<CalculatorValue> Average([FromBody]IEnumerable<CalculatorValue> values)
         {
             return Ok(_calculator.Average(values));
@@ -42,19 +54,36 @@ namespace Calculator.Service.Controllers
         }
 
         [HttpGet("Max")]
+        public ActionResult<CalculatorValue> Max([FromBody]CalculatorPayload payload)
+        {
+            return Ok(_calculator.Max(payload.ValueX, payload.ValueY));
+        }
+
+        [HttpGet("MaxEnumerable")]
         public ActionResult<CalculatorValue> Max([FromBody]IEnumerable<CalculatorValue> values)
         {
             return Ok(_calculator.Max(values));
         }
 
-
         [HttpGet("Min")]
+        public ActionResult<CalculatorValue> Min([FromBody]CalculatorPayload payload)
+        {
+            return Ok(_calculator.Min(payload.ValueX, payload.ValueY));
+        }
+
+        [HttpGet("MinEnumerable")]
         public ActionResult<CalculatorValue> Min([FromBody]IEnumerable<CalculatorValue> values)
         {
             return Ok(_calculator.Min(values));
         }
 
         [HttpGet("Multiply")]
+        public ActionResult<CalculatorValue> Multiply([FromBody]CalculatorPayload payload)
+        {
+            return Ok(_calculator.Multiply(payload.ValueX, payload.ValueY));
+        }
+
+        [HttpGet("MultiplyEnumerable")]
         public ActionResult<CalculatorValue> Multiply([FromBody]IEnumerable<CalculatorValue> values)
         {
             return Ok(_calculator.Multiply(values));
