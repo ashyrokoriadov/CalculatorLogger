@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
@@ -54,6 +55,7 @@ namespace Calculator.Service
 
             builder.RegisterType<IsNullValidator>().Named<IValidator<CalculatorValue>>("NullValidator");
             builder.RegisterType<IsZeroValidator>().Named<IValidator<CalculatorValue>>("ZeroValidator");
+            builder.RegisterType<IsNullBandValidator>().Named<IValidator<Dictionary<decimal,decimal>>>("BandDecimalValidator");
             var controllers = typeof(Startup).Assembly.GetTypes().Where(t => t.BaseType == typeof(ControllerBase)).ToArray();
             builder.RegisterTypes(controllers).WithAttributeFiltering();
 

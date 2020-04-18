@@ -3,10 +3,10 @@ using LoggingCalculator.AbstractionsAndModels.Models;
 
 namespace LoggingCalculator.AbstractionsAndModels.Payloads
 {
-    public class CalculatorSubtractPayload : ICorrelated
+    public class BandResolverPayload : ICorrelated
     {
-        public IEnumerable<CalculatorValue> Values { get; set; }
-        public CalculatorValue Minuend { get; set; }
+        public Dictionary<decimal, decimal> Bands { get; set; }
+        public CalculatorValue ValueToResolve { get; set; }
         public string CorrelationId { get; set; }
     }
 }

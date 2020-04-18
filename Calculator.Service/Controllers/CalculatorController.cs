@@ -206,13 +206,13 @@ namespace Calculator.Service.Controllers
         {
             if (_nullValidator.Validate(payload.ValueX))
             {
-                result = BadRequest(string.Format(ErrorCodes.NULL_VALUE_TEMPLATE, nameof(payload.ValueX)));
+                result = BadRequest(string.Format(ErrorMessages.NULL_VALUE_TEMPLATE, nameof(payload.ValueX)));
                 return true;
             }
 
             if (_nullValidator.Validate(payload.ValueY))
             {
-                result = BadRequest(string.Format(ErrorCodes.NULL_VALUE_TEMPLATE, nameof(payload.ValueY)));
+                result = BadRequest(string.Format(ErrorMessages.NULL_VALUE_TEMPLATE, nameof(payload.ValueY)));
                 return true;
             }
 
@@ -224,7 +224,7 @@ namespace Calculator.Service.Controllers
         {
             if (_nullValidator.Validate(payload.Minuend))
             {
-                result = BadRequest(string.Format(ErrorCodes.NULL_VALUE_TEMPLATE, nameof(payload.Minuend)));
+                result = BadRequest(string.Format(ErrorMessages.NULL_VALUE_TEMPLATE, nameof(payload.Minuend)));
                 return true;
             }
 
@@ -241,7 +241,7 @@ namespace Calculator.Service.Controllers
         {
             if (_nullValidator.Validate(payload.Dividend))
             {
-                result = BadRequest(string.Format(ErrorCodes.NULL_VALUE_TEMPLATE, nameof(payload.Dividend)));
+                result = BadRequest(string.Format(ErrorMessages.NULL_VALUE_TEMPLATE, nameof(payload.Dividend)));
                 return true;
             }
 
@@ -260,7 +260,7 @@ namespace Calculator.Service.Controllers
             {
                 if (_nullValidator.Validate(payload))
                 {
-                    result = BadRequest(ErrorCodes.NULL_VALUE);
+                    result = BadRequest(ErrorMessages.NULL_VALUE);
                     return true;
                 }
             }
@@ -273,7 +273,7 @@ namespace Calculator.Service.Controllers
         {
             if (_zeroValidator.Validate(payload.ValueY))
             {
-                result = BadRequest(string.Format(ErrorCodes.NULL_DIVISION_TEMPLATE, nameof(payload.ValueY)));
+                result = BadRequest(string.Format(ErrorMessages.NULL_DIVISION_TEMPLATE, nameof(payload.ValueY)));
                 return true;
             }
 
@@ -287,7 +287,7 @@ namespace Calculator.Service.Controllers
             {
                 if (_zeroValidator.Validate(payload))
                 {
-                    result = BadRequest(ErrorCodes.NULL_DIVISION);
+                    result = BadRequest(ErrorMessages.NULL_DIVISION);
                     return true;
                 }
             }
