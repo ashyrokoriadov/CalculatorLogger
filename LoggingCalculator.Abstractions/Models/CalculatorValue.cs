@@ -1,6 +1,6 @@
 ﻿namespace LoggingCalculator.AbstractionsAndModels.Models
 {
-    public class CalculatorValue
+    public class CalculatorValue 
     {
         public decimal Value { get; set; }
         public string Name { get; set; }

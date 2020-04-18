@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Linq;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Autofac.Features.AttributeFilters;
 using Calculator.Aggregations;
 using Calculator.Arithmetic;
+using Calculator.Validator;
 using LoggingCalculator.AbstractionsAndModels;
 using LoggingCalculator.AbstractionsAndModels.Aggregations;
 using LoggingCalculator.AbstractionsAndModels.Arithmetic;
 using LoggingCalculator.AbstractionsAndModels.Models;
+using LoggingCalculator.AbstractionsAndModels.Validators;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +34,9 @@ namespace Calculator.Service
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddControllersAsServices();
 
             var builder = new ContainerBuilder();
             builder.Populate(services);
@@ -46,7 +52,12 @@ namespace Calculator.Service
             builder.RegisterType<Multiplier>().As<IMultiplier<CalculatorValue>>();
             builder.RegisterType<ArithmeticCalculator<CalculatorValue>>().As<IArithmeticCalculator<CalculatorValue>>();
 
-            builder.RegisterType<Calculator<CalculatorValue>>().As<ICalculator<CalculatorValue>>();
+            builder.RegisterType<IsNullValidator>().Named<IValidator<CalculatorValue>>("NullValidator");
+            builder.RegisterType<IsZeroValidator>().Named<IValidator<CalculatorValue>>("ZeroValidator");
+            var controllers = typeof(Startup).Assembly.GetTypes().Where(t => t.BaseType == typeof(ControllerBase)).ToArray();
+            builder.RegisterTypes(controllers).WithAttributeFiltering();
+
+            builder.RegisterType<Calculator<CalculatorValue>>().As<ICalculator<CalculatorValue>>().SingleInstance();
             AutofacContainer = builder.Build();
 
             return new AutofacServiceProvider(AutofacContainer);
