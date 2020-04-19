@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Autofac.Features.AttributeFilters;
-using Calculator.Service.Constants;
+using Calculator.Service.Interfaces;
 using LoggingCalculator.AbstractionsAndModels;
 using LoggingCalculator.AbstractionsAndModels.Models;
 using LoggingCalculator.AbstractionsAndModels.Payloads;
-using LoggingCalculator.AbstractionsAndModels.Validators;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Calculator.Service.Controllers
@@ -15,296 +13,205 @@ namespace Calculator.Service.Controllers
     public class CalculatorController : ControllerBase
     {
         private readonly ICalculator<CalculatorValue> _calculator;
-        private readonly IValidator<CalculatorValue> _nullValidator;
-        private readonly IValidator<CalculatorValue> _zeroValidator;
+        private readonly ICalculatorValidator _validator;
 
         public CalculatorController(
             ICalculator<CalculatorValue> calculator
-            , [KeyFilter("NullValidator")] IValidator<CalculatorValue> nullValidator
-            , [KeyFilter("ZeroValidator")] IValidator<CalculatorValue> zeroValidator)
+            , ICalculatorValidator validator)
         {
             _calculator = calculator;
-            _nullValidator = nullValidator;
-            _zeroValidator = zeroValidator;
+            _validator = validator;
         }
 
         [HttpGet("Add")]
         public ActionResult<CalculatorValue> Add([FromBody]CalculatorPayload payload)
         {
-            if (ValidateNull(payload, out var result))
+            if (_validator.ValidateNull(payload, out var result))
             {
                 return result;
             }
 
-            return Ok(_calculator.Add(payload.ValueX, payload.ValueY));
+            var calculatioResult = _calculator.Add(payload.ValueX, payload.ValueY);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("AddEnumerable")]
-        public ActionResult<CalculatorValue> Add([FromBody]IEnumerable<CalculatorValue> values)
+        public ActionResult<CalculatorValue> Add([FromBody]CalculatorEnumerablePayload payload)
         {
-            var valuesAsArray = values.ToArray();
-
-            if (ValidateNull(valuesAsArray, out var result))
+            if (_validator.ValidateNull(payload, out var result))
             {
                 return result;
             }
 
-            return Ok(_calculator.Add(valuesAsArray));
+            var calculatioResult = _calculator.Add(payload.Values);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("Average")]
         public ActionResult<CalculatorValue> Average([FromBody]CalculatorPayload payload)
         {
-            if (ValidateNull(payload, out var result))
+            if (_validator.ValidateNull(payload, out var result))
             {
                 return result;
             }
 
-            return Ok(_calculator.Average(payload.ValueX, payload.ValueY));
+            var calculatioResult = _calculator.Average(payload.ValueX, payload.ValueY);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("AverageEnumerable")]
-        public ActionResult<CalculatorValue> Average([FromBody]IEnumerable<CalculatorValue> values)
+        public ActionResult<CalculatorValue> Average([FromBody]CalculatorEnumerablePayload payload)
         {
-            var valuesAsArray = values.ToArray();
-
-            if (ValidateNull(valuesAsArray, out var result))
+            if (_validator.ValidateNull(payload, out var result))
             {
                 return result;
             }
 
-            return Ok(_calculator.Average(valuesAsArray));
+            var calculatioResult = _calculator.Average(payload.Values);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("Divide")]
         public ActionResult<CalculatorValue> Divide([FromBody]CalculatorPayload payload)
         {
-            if (ValidateNull(payload, out var nullResult))
+            if (_validator.ValidateNull(payload, out var nullResult))
             {
                 return nullResult;
             }
 
-            if (ValidateZero(payload, out var zeroResult))
+            if (_validator.ValidateZero(payload, out var zeroResult))
             {
                 return zeroResult;
             }
 
-            return Ok(_calculator.Divide(payload.ValueX, payload.ValueY));
+            var calculatioResult = _calculator.Divide(payload.ValueX, payload.ValueY);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("DivideEnumerable")]
         public ActionResult<CalculatorValue> Divide([FromBody]CalculatorDividePayload payload)
         {
-            if (ValidateNull(payload, out var nullResult))
+            if (_validator.ValidateNull(payload, out var nullResult))
             {
                 return nullResult;
             }
 
-            if (ValidateZero(payload, out var zeroResult))
+            if (_validator.ValidateZero(payload, out var zeroResult))
             {
                 return zeroResult;
             }
 
-            return Ok(_calculator.Divide(payload.Values, payload.Dividend));
+            var calculatioResult = _calculator.Divide(payload.Values, payload.Dividend);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("Max")]
         public ActionResult<CalculatorValue> Max([FromBody]CalculatorPayload payload)
         {
-            if (ValidateNull(payload, out var result))
+            if (_validator.ValidateNull(payload, out var result))
             {
                 return result;
             }
 
-            return Ok(_calculator.Max(payload.ValueX, payload.ValueY));
+            var calculatioResult = _calculator.Max(payload.ValueX, payload.ValueY);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("MaxEnumerable")]
-        public ActionResult<CalculatorValue> Max([FromBody]IEnumerable<CalculatorValue> values)
+        public ActionResult<CalculatorValue> Max([FromBody]CalculatorEnumerablePayload payload)
         {
-            var valuesAsArray = values.ToArray();
-
-            if (ValidateNull(valuesAsArray, out var result))
+            if (_validator.ValidateNull(payload, out var result))
             {
                 return result;
             }
 
-            return Ok(_calculator.Max(valuesAsArray));
+            var calculatioResult = _calculator.Max(payload.Values);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("Min")]
         public ActionResult<CalculatorValue> Min([FromBody]CalculatorPayload payload)
         {
-            if (ValidateNull(payload, out var result))
+            if (_validator.ValidateNull(payload, out var result))
             {
                 return result;
             }
 
-            return Ok(_calculator.Min(payload.ValueX, payload.ValueY));
+            var calculatioResult = _calculator.Min(payload.ValueX, payload.ValueY);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("MinEnumerable")]
-        public ActionResult<CalculatorValue> Min([FromBody]IEnumerable<CalculatorValue> values)
+        public ActionResult<CalculatorValue> Min([FromBody]CalculatorEnumerablePayload payload)
         {
-            var valuesAsArray = values.ToArray();
-
-            if (ValidateNull(valuesAsArray, out var result))
+            if (_validator.ValidateNull(payload, out var result))
             {
                 return result;
             }
 
-            return Ok(_calculator.Min(valuesAsArray));
+            var calculatioResult = _calculator.Min(payload.Values);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("Multiply")]
         public ActionResult<CalculatorValue> Multiply([FromBody]CalculatorPayload payload)
         {
-            if (ValidateNull(payload, out var result))
+            if (_validator.ValidateNull(payload, out var result))
             {
                 return result;
             }
 
-            return Ok(_calculator.Multiply(payload.ValueX, payload.ValueY));
+            var calculatioResult = _calculator.Multiply(payload.ValueX, payload.ValueY);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("MultiplyEnumerable")]
-        public ActionResult<CalculatorValue> Multiply([FromBody]IEnumerable<CalculatorValue> values)
+        public ActionResult<CalculatorValue> Multiply([FromBody]CalculatorEnumerablePayload payload)
         {
-            var valuesAsArray = values.ToArray();
 
-            if (ValidateNull(valuesAsArray, out var result))
+            if (_validator.ValidateNull(payload, out var result))
             {
                 return result;
             }
 
-            return Ok(_calculator.Multiply(valuesAsArray));
+            var calculatioResult = _calculator.Multiply(payload.Values);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("Subtract")]
         public ActionResult<CalculatorValue> Subtract([FromBody]CalculatorPayload payload)
         {
-            if (ValidateNull(payload, out var result))
+            if (_validator.ValidateNull(payload, out var result))
             {
                 return result;
             }
 
-            return Ok(_calculator.Subtract(payload.ValueX, payload.ValueY));
+            var calculatioResult = _calculator.Subtract(payload.ValueX, payload.ValueY);
+            calculatioResult.CorrelationId = payload.CorrelationId;
+            return Ok(calculatioResult);
         }
 
         [HttpGet("SubtractEnumerable")]
         public ActionResult<CalculatorValue> Subtract([FromBody]CalculatorSubtractPayload payload)
         {
-            if (ValidateNull(payload, out var result))
+            if (_validator.ValidateNull(payload, out var result))
             {
                 return result;
             }
 
             return Ok(_calculator.Subtract(payload.Values, payload.Minuend));
-        }
-
-        private bool ValidateNull(CalculatorPayload payload, out ActionResult<CalculatorValue> result)
-        {
-            if (_nullValidator.Validate(payload.ValueX))
-            {
-                result = BadRequest(string.Format(ErrorMessages.NULL_VALUE_TEMPLATE, nameof(payload.ValueX)));
-                return true;
-            }
-
-            if (_nullValidator.Validate(payload.ValueY))
-            {
-                result = BadRequest(string.Format(ErrorMessages.NULL_VALUE_TEMPLATE, nameof(payload.ValueY)));
-                return true;
-            }
-
-            result = null;
-            return false;
-        }
-
-        private bool ValidateNull(CalculatorSubtractPayload payload, out ActionResult<CalculatorValue> result)
-        {
-            if (_nullValidator.Validate(payload.Minuend))
-            {
-                result = BadRequest(string.Format(ErrorMessages.NULL_VALUE_TEMPLATE, nameof(payload.Minuend)));
-                return true;
-            }
-
-            if (ValidateNull(payload.Values, out result))
-            {
-                return true;
-            }
-
-            result = null;
-            return false;
-        }
-
-        private bool ValidateNull(CalculatorDividePayload payload, out ActionResult<CalculatorValue> result)
-        {
-            if (_nullValidator.Validate(payload.Dividend))
-            {
-                result = BadRequest(string.Format(ErrorMessages.NULL_VALUE_TEMPLATE, nameof(payload.Dividend)));
-                return true;
-            }
-
-            if (ValidateNull(payload.Values, out result))
-            {
-                return true;
-            }
-
-            result = null;
-            return false;
-        }
-
-        private bool ValidateNull(IEnumerable<CalculatorValue> values, out ActionResult<CalculatorValue> result)
-        {
-            foreach (var payload in values)
-            {
-                if (_nullValidator.Validate(payload))
-                {
-                    result = BadRequest(ErrorMessages.NULL_VALUE);
-                    return true;
-                }
-            }
-
-            result = null;
-            return false;
-        }
-
-        private bool ValidateZero(CalculatorPayload payload, out ActionResult<CalculatorValue> result)
-        {
-            if (_zeroValidator.Validate(payload.ValueY))
-            {
-                result = BadRequest(string.Format(ErrorMessages.NULL_DIVISION_TEMPLATE, nameof(payload.ValueY)));
-                return true;
-            }
-
-            result = null;
-            return false;
-        }
-
-        private bool ValidateZero(IEnumerable<CalculatorValue> values, out ActionResult<CalculatorValue> result)
-        {
-            foreach (var payload in values)
-            {
-                if (_zeroValidator.Validate(payload))
-                {
-                    result = BadRequest(ErrorMessages.NULL_DIVISION);
-                    return true;
-                }
-            }
-
-            result = null;
-            return false;
-        }
-
-        private bool ValidateZero(CalculatorDividePayload payload, out ActionResult<CalculatorValue> result)
-        {
-            if (ValidateZero(payload.Values, out result))
-            {
-                return true;
-            }
-
-            result = null;
-            return false;
         }
     }
 }

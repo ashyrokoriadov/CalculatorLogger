@@ -6,6 +6,8 @@ using Autofac.Extensions.DependencyInjection;
 using Autofac.Features.AttributeFilters;
 using Calculator.Aggregations;
 using Calculator.Arithmetic;
+using Calculator.Service.Interfaces;
+using Calculator.Service.Validators;
 using Calculator.Validator;
 using LoggingCalculator.AbstractionsAndModels;
 using LoggingCalculator.AbstractionsAndModels.Aggregations;
@@ -58,6 +60,9 @@ namespace Calculator.Service
             builder.RegisterType<IsNullBandValidator>().Named<IValidator<Dictionary<decimal,decimal>>>("BandDecimalValidator");
             var controllers = typeof(Startup).Assembly.GetTypes().Where(t => t.BaseType == typeof(ControllerBase)).ToArray();
             builder.RegisterTypes(controllers).WithAttributeFiltering();
+
+            builder.RegisterType<CalculatorValidator>().As<ICalculatorValidator>().WithAttributeFiltering();
+            builder.RegisterType<BandValidator>().As<IBandValidator>().WithAttributeFiltering();
 
             builder.RegisterType<Calculator<CalculatorValue>>().As<ICalculator<CalculatorValue>>().SingleInstance();
             AutofacContainer = builder.Build();

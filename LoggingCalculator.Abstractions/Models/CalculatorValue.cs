@@ -1,9 +1,10 @@
 ﻿namespace LoggingCalculator.AbstractionsAndModels.Models
 {
-    public class CalculatorValue 
+    public class CalculatorValue : ICorrelated
     {
         public decimal Value { get; set; }
         public string Name { get; set; }
+        public string CorrelationId { get; set; }
 
         public CalculatorValue() { }
 
