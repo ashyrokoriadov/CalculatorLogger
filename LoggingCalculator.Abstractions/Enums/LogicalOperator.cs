@@ -2,11 +2,11 @@
 {
     public enum LogicalOperator
     {
-        Greater,
-        GreaterOrEqual,
-        Less,
-        LessOrEqual,
-        Equal,
-        NotEqual
+        Greater = 0,
+        GreaterOrEqual = 1,
+        Less = 2,
+        LessOrEqual = 3,
+        Equal = 4,
+        NotEqual = 5
     }
 }
