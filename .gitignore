@@ -37,3 +37,6 @@
 /Calculator.Service/obj/Calculator.Service.csproj.nuget.cache
 /.vs/config/applicationhost.config
 /.vs/CalculatorLogger/v15/.suo
+/.vs/CalculatorLogger/v15/Server/sqlite3/storage.ide
+/.vs/CalculatorLogger/v15/Server/sqlite3/storage.ide-shm
+/.vs/CalculatorLogger/v15/Server/sqlite3/storage.ide-wal
