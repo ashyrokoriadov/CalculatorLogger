@@ -35,3 +35,4 @@
 /Calculator.Service/obj/Calculator.Service.csproj.nuget.g.targets
 /Calculator.Service/obj/Calculator.Service.csproj.nuget.g.props
 /Calculator.Service/obj/Calculator.Service.csproj.nuget.cache
+/.vs/config/applicationhost.config
