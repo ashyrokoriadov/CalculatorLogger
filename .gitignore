@@ -87,3 +87,5 @@
 /LoggingCalculator.Abstractions/bin/Debug/netcoreapp2.2/LoggingCalculator.AbstractionsAndModels.dll
 /.vs/CalculatorLogger/DesignTimeBuild/.dtbcache
 /CalculatorTests/obj/Debug/netcoreapp2.2/CalculatorTests.AssemblyInfo.cs
+/CalculatorTests/bin/Debug/netcoreapp2.2/nunit_random_seed.tmp
+/.vs
