@@ -36,9 +36,9 @@ namespace Calculator.Service.Controllers
 
             ICondition<CalculatorValue> resolver = new Condition(payload.ReferenceValue, payload.Operator);
             var result = resolver.Evaluate(payload.ComparingValue);
-            return Ok(new ConditionResult()
+            return Ok(new Result<bool>()
                 {
-                    Result = result,
+                    Value = result,
                     CorrelationId = payload.CorrelationId
                 }
             );
@@ -60,9 +60,9 @@ namespace Calculator.Service.Controllers
 
             ICondition<CalculatorValue> resolver = new MultiCondition(conditions, payload.Operator);
             var result = resolver.Evaluate(payload.ComparingValue);
-            return Ok(new ConditionResult()
+            return Ok(new Result<bool>()
                 {
-                    Result = result,
+                    Value = result,
                     CorrelationId = payload.CorrelationId
                 }
             );
