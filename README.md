@@ -14,7 +14,7 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 ### Implementations namespace
 A namespace where yoiu can find one implementation of ICalculator interface (StandardCalculator) and 2 implementations of IFormulaLogger interface (ConsoleFormulaLogger and XMLFormulaLogger).
 ### Interfaces namespace
-Except several interfaces already mentioned, a few more interface defined here. Basically the IFormulaLogger interface combines other small interface in one generic interface.
+Except several interfaces already mentioned, a few more interfaces defined here. Basically the IFormulaLogger interface combines other small interfaces in one generic interface.
 ### Models namespace
 Models used in a librabry defined here.
 ### Static namespace
